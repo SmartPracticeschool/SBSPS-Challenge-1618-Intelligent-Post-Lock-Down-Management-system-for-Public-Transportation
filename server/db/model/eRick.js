@@ -8,9 +8,7 @@ var erickDetails = new Schema({
     'password': {
         type: String
     },
-    'vehicleRegistrationNumber': {
-        type: String
-    },
+
     'vehicleRegistrationNumber': {
         type: String
     },

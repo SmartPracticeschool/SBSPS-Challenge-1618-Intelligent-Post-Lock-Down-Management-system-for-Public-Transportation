@@ -16,9 +16,6 @@ var busDetails = new Schema({
     'vehicleRegistrationNumber': {
         type: String
     },
-    'vehicleRegistrationNumber': {
-        type: String
-    },
 
     'creationDate': {
         type: Date
