@@ -1,0 +1,23 @@
+{
+  "name": "ibm_post_lockdown_transport_solution",
+  "version": "1.0.0",
+  "description": "IBM hack challenge 2020 participation application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "IBM",
+    "HACK",
+    "COVID",
+    "LOCKDOWN",
+    "TRANSPORT"
+  ],
+  "author": "HIMANK GUPTA",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.18"
+  }
+}
