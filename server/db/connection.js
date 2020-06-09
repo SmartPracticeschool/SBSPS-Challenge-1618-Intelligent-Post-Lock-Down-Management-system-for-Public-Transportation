@@ -1,3 +1,4 @@
 const mongoose = require('mongoose');
-//mongoose.connect('mongodb+srv://Himank:gtYB765wY84Azgqh@cluster0-8x3qd.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb+srv://Shobhit:Sh0bhit@covidlockdowntransportation-lbmn5.mongodb.net/<dbname>?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
+
 module.exports = mongoose;
