@@ -9,7 +9,7 @@ var seat = new Schema({
         default: false
     },
     'busId': {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         ref: 'busCollection',
         default: null
     },

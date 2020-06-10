@@ -69,6 +69,7 @@ export default function UserRegister(props) {
                 fullWidth
                 id="firstName"
                 name="firstName"
+                onChange={props.takeInput}
                 label="First Name"
                 autoFocus
               />
@@ -79,6 +80,7 @@ export default function UserRegister(props) {
                 required
                 fullWidth
                 id="lastName"
+                onChange={props.takeInput}
                 label="Last Name"
                 name="lastName"
                 autoComplete="lastname"
@@ -90,6 +92,7 @@ export default function UserRegister(props) {
                 required
                 fullWidth
                 id="email"
+                onChange={props.takeInput}
                 label="Email Address"
                 name="email"
                 autoComplete="email"
@@ -103,6 +106,7 @@ export default function UserRegister(props) {
                 name="password"
                 label="Password"
                 type="password"
+                onChange={props.takeInput}
                 id="password"
                 autoComplete="current-password"
               />
@@ -115,6 +119,7 @@ export default function UserRegister(props) {
                 name="phoneno"
                 label="Phone No."
                 id="phoneno"
+                onChange={props.takeInput}
                 autoComplete="phoneno"
               />
             </Grid>

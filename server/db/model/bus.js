@@ -18,7 +18,8 @@ var busDetails = new Schema({
     },
 
     'creationDate': {
-        type: Date
+        type: Date,
+        default:Date.now()
     },
     'phoneNumber': {
         type: String,
@@ -26,6 +27,9 @@ var busDetails = new Schema({
     },
     'totalSeats': {
         type: String
+    },
+    'price':{
+        type:Number
     },
     'bookedSeats': [{
         type: mongoose.Schema.Types.ObjectId,

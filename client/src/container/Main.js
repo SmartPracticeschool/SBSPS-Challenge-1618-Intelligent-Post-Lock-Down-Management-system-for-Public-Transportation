@@ -34,7 +34,10 @@ class Main extends React.Component {
     }
     userRegister() {
         console.log('User Register Call');
+        // let fullName=this.inputs['firstName']+this.inputs['lastName'];
+        // console.log('The value of fullName ',fullName);
         var userObject = { "name": this.inputs['firstName'] + this.inputs['lastName'], "email": this.inputs['email'], "password": this.inputs['password'], "creationDate": new Date(), "phoneNumber": this.inputs['phoneno'] };
+        console.log('The value of userObject is ',userObject);
         fetch(Config.BASEURL + Config.USERREGISTER, {
             method: 'POST', headers: {
                 'Content-Type': 'application/json'

@@ -1,7 +1,10 @@
-var app = require('express')();
+const express = require('express');
+const app =express();
 
 const PORT = process.env.PORT || 1234;
 var bodyParser = require('body-parser');
+
+//app.use(express.static('public'));
 
 app.use(bodyParser.urlencoded({
     extended: false
@@ -19,6 +22,7 @@ app.get('/', (req, res) => {
     console.log('request on server is :', req.method);
     res.send('Main Server api started');
 });
+app.use('/',require('./routes/authservice'));
 //app.use('/auth', require('./route/authservice'));
 //
 //
