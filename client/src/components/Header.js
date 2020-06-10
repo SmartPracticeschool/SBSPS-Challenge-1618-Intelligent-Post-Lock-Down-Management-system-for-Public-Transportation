@@ -4,9 +4,9 @@ export const Header = () => {
     return (
         <div>
             <nav className="navbar navbar-dark bg-dark">
-                <div class="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">
-                    <a class="navbar-brand" href="#">Booking System</a>
-                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div className="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">
+                    <p className="navbar-brand">Booking System</p>
+                    <div className="collapse navbar-collapse" id="navbarCollapse">
                         <NavLink activeClassName='active' exact to='/'>Login</NavLink>
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         <NavLink activeClassName='active' to='/userRegister'>User Register</NavLink>

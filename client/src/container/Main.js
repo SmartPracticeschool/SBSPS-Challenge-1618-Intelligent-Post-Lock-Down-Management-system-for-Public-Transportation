@@ -15,6 +15,9 @@ class Main extends React.Component {
     takeInput(event) {
         this.inputs[event.target.name] = event.target.value;
     }
+    handleSelectedDays(selectedDays){
+        this.inputs['scheduled_days'] = selectedDays;
+    }
     login() {
         console.log('Login Call');
         var userObject = { "email": this.inputs['email'], "password": this.inputs['password'] };
@@ -43,13 +46,10 @@ class Main extends React.Component {
             .catch(err => console.log('Json Error is ', err)))
             .catch(e => console.log('Server Error is ', e));
     }
-    popUp() {
-        //To be filled
-    }
     busRegister() {
         console.log('Bus Driver Register Call');
-        var userObject = { "name": this.inputs['firstName'] + this.inputs['lastName'], "email": this.inputs['email'], "password": this.inputs['password'], "vehicleRegistrationNumber": this.inputs['vehicleRegistrationNumber'], "creationDate": new Date(), "phoneNumber": this.inputs['phoneno'] };
-        fetch(Config.BASEURL + Config.USERREGISTER, {
+        var userObject = { "ownerName": this.inputs['ownerName'],"driverName":this.inputs['driverName'], "email": this.inputs['email'], "password": this.inputs['password'], "vehicleRegistrationNumber": this.inputs['vehicleRegistrationNumber'], "creationDate": new Date(), "phoneNumber": this.inputs['phoneno'],"totalSeats":this.inputs['totalSeats'],"scheduled_days":this.inputs['scheduled_days'],"schedule_time":[this.inputs['startTime'],this.inputs['endTime']]};
+        fetch(Config.BASEURL + Config.BUSREGISTER, {
             method: 'POST', headers: {
                 'Content-Type': 'application/json'
             }, body: JSON.stringify(userObject)
@@ -61,8 +61,8 @@ class Main extends React.Component {
             .catch(e => console.log('Server Error is ', e));
     }
     rickRegister() {
-        var userObject = { "name": this.inputs['firstName'] + this.inputs['lastName'], "email": this.inputs['email'], "password": this.inputs['password'], "vehicleRegistrationNumber": this.inputs['vehicleRegistrationNumber'], "creationDate": new Date(), "phoneNumber": this.inputs['phoneno'] };
-        fetch(Config.BASEURL + Config.USERREGISTER, {
+        var userObject = { "ownerName": this.inputs['ownerName'],"driverName":this.inputs['driverName'], "email": this.inputs['email'], "password": this.inputs['password'], "vehicleRegistrationNumber": this.inputs['vehicleRegistrationNumber'], "creationDate": new Date(), "phoneNumber": this.inputs['phoneno'],"totalSeats":this.inputs['totalSeats']};
+        fetch(Config.BASEURL + Config.RICKREGISTER, {
             method: 'POST', headers: {
                 'Content-Type': 'application/json'
             }, body: JSON.stringify(userObject)
@@ -83,7 +83,7 @@ class Main extends React.Component {
                 <Switch>
                     <Route exact path='/' render={() => <SignIn login={this.login.bind(this)} takeInput={this.takeInput.bind(this)} />} />
                     <Route path='/userRegister' render={() => <UserRegister takeInput={this.takeInput.bind(this)} userRegister={this.userRegister.bind(this)} />} />
-                    <Route path='/busRegister' render={() => <BusRegister takeInput={this.takeInput.bind(this)} popUp={this.popUp.bind(this)} busRegister={this.busRegister.bind(this)} />} />
+                    <Route path='/busRegister' render={() => <BusRegister takeInput={this.takeInput.bind(this)} busRegister={this.busRegister.bind(this)} handleSelectedDays={this.handleSelectedDays.bind(this)}/>} />
                     <Route path='/rickRegister' render={() => <RickRegister takeInput={this.takeInput.bind(this)} rickRegister={this.rickRegister.bind(this)} />} />
                 </Switch>
             </div>

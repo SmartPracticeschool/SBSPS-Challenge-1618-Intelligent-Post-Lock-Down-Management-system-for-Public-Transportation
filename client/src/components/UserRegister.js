@@ -120,7 +120,6 @@ export default function UserRegister(props) {
             </Grid>
           </Grid>
           <Button
-            type="submit"
             fullWidth
             variant="contained"
             color="primary"
