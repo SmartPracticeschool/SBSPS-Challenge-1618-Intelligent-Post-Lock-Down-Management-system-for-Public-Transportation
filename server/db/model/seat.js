@@ -1,0 +1,28 @@
+const mongoose = require('../connection');
+const Schema = mongoose.Schema;
+
+
+
+var seat = new Schema({
+    'isoccupied': {
+        type: Boolean,
+        default: false
+    },
+    'busId': {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'busCollection',
+        default: null
+    },
+    'price': {
+        type: String
+    },
+    'bookingId': {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'bookingCollection',
+        default: null
+    }
+
+});
+
+var seatCollection = mongoose.model('seatCollection', seat);
+module.exports = seatCollection;

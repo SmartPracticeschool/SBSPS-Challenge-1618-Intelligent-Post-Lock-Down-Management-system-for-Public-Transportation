@@ -26,7 +26,12 @@ var user = new Schema({
             type: String,
             default: null
         }
-    }
+    },
+    'ratings': [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'ratingCollection',
+        default: null
+    }]
 });
 
 var userCollection = mongoose.model('userCollection', user);

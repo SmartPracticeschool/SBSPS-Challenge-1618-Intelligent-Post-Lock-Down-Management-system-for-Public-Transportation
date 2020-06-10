@@ -24,10 +24,10 @@ var busDetails = new Schema({
         type: String,
         default: null
     },
-    'TotalSeats': {
+    'totalSeats': {
         type: String
     },
-    'BookedSeats': [{
+    'bookedSeats': [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'bookingCollection',
         default: null
@@ -41,6 +41,11 @@ var busDetails = new Schema({
             type: String,
             default: null
         }
+    },
+    'scheduled_days': [], //M,W,F types
+    'schedule_time': [], //{start,end}
+    'avg_duration': {
+        type: String
     },
     'CoordinatesBusStop': [{
         'lat': {
