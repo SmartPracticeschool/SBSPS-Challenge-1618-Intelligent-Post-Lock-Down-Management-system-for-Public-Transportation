@@ -1,1 +1,49 @@
 for keeping client folder at repo. 
+
+
+
+        getCurrentPosition() {
+            console.log('getposition called');
+
+            navigator.geolocation.getCurrentPosition(position => {
+                    var lat = position.coords.latitude;
+                    var lng = position.coords.longitude;
+                    console.log('lat:', lat, "lng:", lng, "timestamp", position.timestamp);
+
+                    this.setState({
+                        'lat': lat,
+                        'lng': lng
+                    });
+
+                    console.log('b4 socket emit');
+                    this.state.socket.emit('Coords_update', {
+                        'clientID': this.state.clientID,
+                        'role': this.state.role,
+                        'coords': {
+                            'lat': lat,
+                            'lng': lng,
+                            'time': position.timestamp
+                        }
+                    });
+                    console.log('after socket emit');
+                },
+                err => {
+                    alert("Gogle maps can't be loaded", err)
+                }, {
+                    enableHighAccuracy: true,
+                }
+            )
+
+        }
+
+
+
+
+
+         this.state = {
+                'lat': '28.7041',
+                'lng': '77.1025',
+                clientID: '',
+                role: '',
+                socket: io('http://localhost:1234'),
+            };
