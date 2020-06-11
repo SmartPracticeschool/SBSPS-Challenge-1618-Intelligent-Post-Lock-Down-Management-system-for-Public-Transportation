@@ -1,3 +1,8 @@
+const mongoose = require('../connection');
+const Schema = mongoose.Schema;
+
+
+
 var erickDetails = new Schema({
     'ownerName': {
         type: String
