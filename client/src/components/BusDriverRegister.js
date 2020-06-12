@@ -31,7 +31,8 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 // import Checkbox from '@material-ui/core/Checkbox';
 import Chip from '@material-ui/core/Chip';
-
+import { Header } from './Header';
+import { Link } from 'react-router-dom';
 // function Copyright() {
 //   return (
 //     <Typography variant="body2" color="textSecondary" align="center">
@@ -137,209 +138,221 @@ export default function BusRegister(props) {
     setPersonName(event.target.value);
   };
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign up
+    <>
+      <div>
+        <Header />
+        <hr />
+      </div>
+
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign up
         </Typography>
-        <form className={classes.form} noValidate>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <TextField
-                autoComplete="ownerName"
-                variant="outlined"
-                required
-                fullWidth
-                id="ownerName"
-                name="ownerName"
-                label="Owner Name"
-                onChange={props.takeInput}
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="driverName"
-                label="Driver Name"
-                name="driverName"
-                onChange={props.takeInput}
-                autoComplete="driverName"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                onChange={props.takeInput}
-                autoComplete="email"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                onChange={props.takeInput}
-                autoComplete="current-password"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="vehicleRegistrationNumber"
-                label="Vehicle Registration No."
-                id="vehicleRegistrationNumber"
-                onChange={props.takeInput}
-                autoComplete="vehicleRegistrationNumber"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="phoneno"
-                label="Phone No."
-                id="phoneno"
-                onChange={props.takeInput}
-                autoComplete="phoneno"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="totalSeats"
-                label="Total Seats"
-                id="totalSeats"
-                onChange={props.takeInput}
-                autoComplete="totalSeats"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                id="starttime"
-                variant="outlined"
-                required
-                fullWidth
-                label="Start time"
-                name="startTime"
-                type="time"
-                defaultValue="07:00"
-                onFocus={props.takeInput}
-                className={classes.textField}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                id="endtime"
-                variant="outlined"
-                required
-                fullWidth
-                label="End time"
-                name="endTime"
-                type="time"
-                defaultValue="19:00"
-                onFocus={props.takeInput}
-                className={classes.textField}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <FormControl fullWidth variant="outlined" required>
-                <InputLabel id="demo-mutiple-chip-label">Working Days</InputLabel>
-                <Select
-                  labelId="demo-mutiple-chip-label"
-                  id="demo-mutiple-chip"
-                  name="scheduled_days"
-                  multiple
-                  value={personName}
-                  onChange={handleChange}
-                  onClose={props.handleSelectedDays(personName)}
-                  input={<Input id="select-multiple-chip" />}
-                  renderValue={(selected) => (
-                    <div className={classes.chips}>
-                      {selected.map((value) => (
-                        <Chip key={value} label={value} className={classes.chip} />
-                      ))}
-                    </div>
-                  )}
-                  MenuProps={MenuProps}
-                >
-                  {names.map((name) => (
-                    <MenuItem key={name} value={name} style={getStyles(name, personName, theme)}>
-                      {name}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </Grid>
-            <Grid item xs={12}>
-              <Button variant="outlined" fullWidth color="primary" onClick={handleClickOpen}>
-                Select your Route
+          <form className={classes.form} noValidate>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  autoComplete="ownerName"
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="ownerName"
+                  name="ownerName"
+                  label="Owner Name"
+                  onChange={props.takeInput}
+                  autoFocus
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="driverName"
+                  label="Driver Name"
+                  name="driverName"
+                  onChange={props.takeInput}
+                  autoComplete="driverName"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  onChange={props.takeInput}
+                  autoComplete="email"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  onChange={props.takeInput}
+                  autoComplete="current-password"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  name="vehicleRegistrationNumber"
+                  label="Vehicle Registration No."
+                  id="vehicleRegistrationNumber"
+                  onChange={props.takeInput}
+                  autoComplete="vehicleRegistrationNumber"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  name="phoneno"
+                  label="Phone No."
+                  id="phoneno"
+                  onChange={props.takeInput}
+                  autoComplete="phoneno"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  name="totalSeats"
+                  label="Total Seats"
+                  id="totalSeats"
+                  onChange={props.takeInput}
+                  autoComplete="totalSeats"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  id="starttime"
+                  variant="outlined"
+                  required
+                  fullWidth
+                  label="Start time"
+                  name="startTime"
+                  type="time"
+                  defaultValue="07:00"
+                  onFocus={props.takeInput}
+                  className={classes.textField}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  id="endtime"
+                  variant="outlined"
+                  required
+                  fullWidth
+                  label="End time"
+                  name="endTime"
+                  type="time"
+                  defaultValue="19:00"
+                  onFocus={props.takeInput}
+                  className={classes.textField}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <FormControl fullWidth variant="outlined" required>
+                  <InputLabel id="demo-mutiple-chip-label">Working Days</InputLabel>
+                  <Select
+                    labelId="demo-mutiple-chip-label"
+                    id="demo-mutiple-chip"
+                    name="scheduled_days"
+                    multiple
+                    value={personName}
+                    onChange={handleChange}
+                    onClose={props.handleSelectedDays(personName)}
+                    input={<Input id="select-multiple-chip" />}
+                    renderValue={(selected) => (
+                      <div className={classes.chips}>
+                        {selected.map((value) => (
+                          <Chip key={value} label={value} className={classes.chip} />
+                        ))}
+                      </div>
+                    )}
+                    MenuProps={MenuProps}
+                  >
+                    {names.map((name) => (
+                      <MenuItem key={name} value={name} style={getStyles(name, personName, theme)}>
+                        {name}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12}>
+                <Button variant="outlined" fullWidth color="primary" onClick={handleClickOpen}>
+                  Select your Route
       </Button>
-              <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
-                <AppBar className={classes.appBar}>
-                  <Toolbar>
-                    <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
-                      <CloseIcon />
-                    </IconButton>
-                    <Typography variant="h6" className={classes.title}>
-                      Google Maps
+                <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
+                  <AppBar className={classes.appBar}>
+                    <Toolbar>
+                      <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
+                        <CloseIcon />
+                      </IconButton>
+                      <Typography variant="h6" className={classes.title}>
+                        Google Maps
             </Typography>
-                    <Button autoFocus color="inherit" onClick={handleClose}>
-                      Save
+                      <Button autoFocus color="inherit" onClick={handleClose}>
+                        Save
             </Button>
-                  </Toolbar>
-                </AppBar>
-                <h1>Map Component will be here</h1>
-              </Dialog>
+                    </Toolbar>
+                  </AppBar>
+                  <h1>Map Component will be here</h1>
+                </Dialog>
+              </Grid>
             </Grid>
-          </Grid>
-          <Button
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-            onClick={props.busRegister}
-          >
-            Sign Up
+            <Button
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+              onClick={props.busRegister}
+            >
+              Sign Up
           </Button>
-          {/* <Grid container justify="flex-end">
+            {/* <Grid container justify="flex-end">
             <Grid item>
               <Link href="#" variant="body2">
                 Already have an account? Sign in
               </Link>
             </Grid>
           </Grid> */}
-        </form>
-      </div>
-      {/* <Box mt={5}>
+          </form>
+        </div>
+        {/* <Box mt={5}>
         <Copyright />
       </Box> */}
-    </Container>
+        <Button>
+          <p><Link to="/busDashboard">Temp link to bus driver dashboard</Link></p>
+        </Button>
+
+      </Container>
+
+    </>
   );
 }

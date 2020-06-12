@@ -12,6 +12,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { Header } from './Header';
+import { Link } from 'react-router-dom';
 
 // function Copyright() {
 //   return (
@@ -49,8 +51,13 @@ const useStyles = makeStyles((theme) => ({
 export default function SignIn(props) {
   const classes = useStyles();
 
-  return (
+  return (<>
+    <div>
+      <Header />
+      <hr />
+    </div>
     <Container component="main" maxWidth="xs">
+
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -93,6 +100,9 @@ export default function SignIn(props) {
           >
             Sign In
           </Button>
+          <Button>
+            <p><Link to="/userDashboard">Temp link to user dashboard</Link></p>
+          </Button>
           {/* <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">
@@ -111,5 +121,6 @@ export default function SignIn(props) {
         <Copyright />
       </Box> */}
     </Container>
+  </>
   );
 }

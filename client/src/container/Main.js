@@ -7,6 +7,9 @@ import BusRegister from '../components/BusDriverRegister';
 import RickRegister from '../components/RickDriverRegister';
 import { Header } from '../components/Header';
 import io from 'socket.io-client';
+import { UserDashboard } from '../components/userDashboard';
+import { BusDashboard } from '../components/BusDriverDashboard';
+import { ERickDashboard } from '../components/eRickDriverDashboard';
 
 class Main extends React.Component {
     constructor(props) {
@@ -129,15 +132,19 @@ class Main extends React.Component {
     render() {
         return (
             <div>
-                <div>
+                {/* <div>
                     <Header />
                     <hr />
-                </div>
+                </div> */}
                 <Switch>
                     <Route exact path='/' render={() => <SignIn login={this.login.bind(this)} takeInput={this.takeInput.bind(this)} />} />
                     <Route path='/userRegister' render={() => <UserRegister takeInput={this.takeInput.bind(this)} userRegister={this.userRegister.bind(this)} />} />
                     <Route path='/busRegister' render={() => <BusRegister takeInput={this.takeInput.bind(this)} busRegister={this.busRegister.bind(this)} handleSelectedDays={this.handleSelectedDays.bind(this)} />} />
                     <Route path='/rickRegister' render={() => <RickRegister takeInput={this.takeInput.bind(this)} rickRegister={this.rickRegister.bind(this)} />} />
+
+                    <Route path='/userDashboard' component={UserDashboard} />
+                    <Route path='/busDashboard' component={BusDashboard} />
+                    <Route path='/eRickDashboard' component={ERickDashboard} />
                 </Switch>
             </div>
         )
