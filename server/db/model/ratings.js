@@ -10,8 +10,16 @@ var rating = new Schema({
         default: null
     },
     'location': {
-        'lat': '',
-        'long': ''
+        'lat': {
+            type: String,
+            default: null
+        },
+        'long': {
+            type: String,
+            default: null
+        }
+        // 'lat': '',             // Change this during connection
+        // 'long': ''
     },
     'social_hygiene': {
         type: String
@@ -23,7 +31,7 @@ var rating = new Schema({
         type: String
     },
     'remarks': {
-        type: string
+        type: String
     },
     'average_score': {
         type: String,

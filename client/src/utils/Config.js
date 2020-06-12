@@ -3,5 +3,6 @@ export const Config = {
     LOGIN : '/login',
     USERREGISTER : '/userregister',
     BUSREGISTER : '/busregister',
-    RICKREGISTER : '/rickregister'
+    RICKREGISTER : '/rickregister',
+    ADDREVIEW : '/rate/addreview'
 }
