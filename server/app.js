@@ -27,6 +27,7 @@ app.get('/', (req, res) => {
 });
 app.use('/', require('./routes/authservice'));
 //app.use('/auth', require('./route/authservice'));
+app.use('/rate',require('./routes/ratingservice'));
 //
 //
 app.use((req, res) => res.send('invalid request configured'));
