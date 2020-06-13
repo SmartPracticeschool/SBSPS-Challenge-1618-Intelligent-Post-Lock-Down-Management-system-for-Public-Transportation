@@ -42,9 +42,6 @@ export default function BusDetails() {
           {bull} Some more Info....
         </Typography>
       </CardContent>
-      {/* <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions> */}
     </Card>
   );
 }

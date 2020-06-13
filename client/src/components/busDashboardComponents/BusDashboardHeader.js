@@ -30,7 +30,7 @@ export default function BusDashBoardHeader(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Hello ModiJi
+            Hello DriverName
           </Typography>
           <Button color="inherit">Logout</Button>
         </Toolbar>

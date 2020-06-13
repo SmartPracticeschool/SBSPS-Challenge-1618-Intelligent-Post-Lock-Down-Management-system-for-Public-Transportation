@@ -25,8 +25,6 @@ const StyledTableRow = withStyles((theme) => ({
         },
     },
 }))(TableRow);
-
-// Generate Order Data
 function createData(id, bookId, name, pickUp, drop, amount) {
     return { id, bookId, name, pickUp, drop, amount };
 }
@@ -37,10 +35,6 @@ const rows = [
     createData(3, 113, 'Shobhit Aggarwal', 'Janak Puri', 'Manali', 400),
     createData(4, 114, 'Manik Singh', 'Prashant Vihar', 'GB Road', 50)
 ];
-
-// function preventDefault(event) {
-//   event.preventDefault();
-// }
 
 const useStyles = makeStyles((theme) => ({
     table: {
