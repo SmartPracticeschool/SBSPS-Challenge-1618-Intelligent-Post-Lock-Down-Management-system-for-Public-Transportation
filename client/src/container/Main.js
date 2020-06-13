@@ -15,6 +15,7 @@ import { giveReview } from '../components/GiveReview';
 import { checkReview } from '../components/CheckReview';
 import BusBooking  from '../components/BookaBus';
 import { eRickBooking } from '../components/BookaErick';
+import axios from 'axios';
 
 class Main extends React.Component {
     constructor(props) {
