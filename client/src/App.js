@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import {withRouter } from 'react-router-dom';
 import Main from './container/Main';
-import { ERickDashboard } from './components/eRickDriverDashboard';
-import { BusDashboard } from './components/BusDriverDashboard';
-import { UserDashboard } from './components/userDashboard';
+// import { ERickDashboard } from './components/eRickDriverDashboard';
+// import { BusDashboard } from './components/BusDriverDashboard';
+// import { UserDashboard } from './components/userDashboard';
 
 function App() {
   return (

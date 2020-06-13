@@ -5,10 +5,10 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import UserRegister from '../components/UserRegister';
 import BusRegister from '../components/BusDriverRegister';
 import RickRegister from '../components/RickDriverRegister';
-import { Header } from '../components/Header';
-import io from 'socket.io-client';
+// import { Header } from '../components/Header';
+// import io from 'socket.io-client';
 import { UserDashboard } from '../components/userDashboard';
-import { BusDashboard } from '../components/BusDriverDashboard';
+import  BusDriverDashboard  from '../components/BusDriverDashboard';
 import { ERickDashboard } from '../components/eRickDriverDashboard';
 
 class Main extends React.Component {
@@ -17,13 +17,13 @@ class Main extends React.Component {
         this.obj = {};
         this.inputs = {};
 
-        this.state = {
-            'lat': '28.7041',
-            'lng': '77.1025',
-            clientID: '',
-            role: '',
-            socket: io('http://localhost:1234'),
-        };
+        // this.state = {
+        //     'lat': '28.7041',
+        //     'lng': '77.1025',
+        //     clientID: '',
+        //     role: '',
+        //     socket: io('http://localhost:1234'),
+        // };
     }
     takeInput(event) {
         this.inputs[event.target.name] = event.target.value;
@@ -94,39 +94,39 @@ class Main extends React.Component {
     }
 
 
-    getCurrentPosition() {
-        console.log('getposition called');
+    // getCurrentPosition() {
+    //     console.log('getposition called');
 
-        navigator.geolocation.getCurrentPosition(position => {
-            var lat = position.coords.latitude;
-            var lng = position.coords.longitude;
-            console.log('lat:', lat, "lng:", lng, "timestamp", position.timestamp);
+    //     navigator.geolocation.getCurrentPosition(position => {
+    //         var lat = position.coords.latitude;
+    //         var lng = position.coords.longitude;
+    //         console.log('lat:', lat, "lng:", lng, "timestamp", position.timestamp);
 
-            this.setState({
-                'lat': lat,
-                'lng': lng
-            });
+    //         this.setState({
+    //             'lat': lat,
+    //             'lng': lng
+    //         });
 
-            console.log('b4 socket emit');
-            this.state.socket.emit('Coords_update', {
-                'clientID': this.state.clientID,
-                'role': this.state.role,
-                'coords': {
-                    'lat': lat,
-                    'lng': lng,
-                    'time': position.timestamp
-                }
-            });
-            console.log('after socket emit');
-        },
-            err => {
-                alert("Gogle maps can't be loaded", err)
-            }, {
-            enableHighAccuracy: true,
-        }
-        )
+    //         console.log('b4 socket emit');
+    //         this.state.socket.emit('Coords_update', {
+    //             'clientID': this.state.clientID,
+    //             'role': this.state.role,
+    //             'coords': {
+    //                 'lat': lat,
+    //                 'lng': lng,
+    //                 'time': position.timestamp
+    //             }
+    //         });
+    //         console.log('after socket emit');
+    //     },
+    //         err => {
+    //             alert("Gogle maps can't be loaded", err)
+    //         }, {
+    //         enableHighAccuracy: true,
+    //     }
+    //     )
 
-    }
+    // }
 
 
     render() {
@@ -141,9 +141,8 @@ class Main extends React.Component {
                     <Route path='/userRegister' render={() => <UserRegister takeInput={this.takeInput.bind(this)} userRegister={this.userRegister.bind(this)} />} />
                     <Route path='/busRegister' render={() => <BusRegister takeInput={this.takeInput.bind(this)} busRegister={this.busRegister.bind(this)} handleSelectedDays={this.handleSelectedDays.bind(this)} />} />
                     <Route path='/rickRegister' render={() => <RickRegister takeInput={this.takeInput.bind(this)} rickRegister={this.rickRegister.bind(this)} />} />
-
                     <Route path='/userDashboard' component={UserDashboard} />
-                    <Route path='/busDashboard' component={BusDashboard} />
+                    <Route path='/busDashboard' component={BusDriverDashboard} />
                     <Route path='/eRickDashboard' component={ERickDashboard} />
                 </Switch>
             </div>
