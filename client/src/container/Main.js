@@ -10,6 +10,11 @@ import io from 'socket.io-client';
 import { UserDashboard } from '../components/userDashboard';
 import { BusDashboard } from '../components/BusDriverDashboard';
 import { ERickDashboard } from '../components/eRickDriverDashboard';
+import { smartVisit } from '../components/SmartVisit';
+import { giveReview } from '../components/GiveReview';
+import { checkReview } from '../components/CheckReview';
+import { busBooking } from '../components/BookaBus';
+import { eRickBooking } from '../components/BookaErick';
 
 class Main extends React.Component {
     constructor(props) {
@@ -145,6 +150,11 @@ class Main extends React.Component {
                     <Route path='/userDashboard' component={UserDashboard} />
                     <Route path='/busDashboard' component={BusDashboard} />
                     <Route path='/eRickDashboard' component={ERickDashboard} />
+                    <Route path='/smartVisit' component={smartVisit} />
+                    <Route path='/giveReview' component={giveReview} />
+                    <Route path='/checkReviews' component={checkReview} />
+                    <Route path='/busBooking' component={busBooking} />
+                    <Route path='/eRickBooking' component={eRickBooking} />
                 </Switch>
             </div>
         )
