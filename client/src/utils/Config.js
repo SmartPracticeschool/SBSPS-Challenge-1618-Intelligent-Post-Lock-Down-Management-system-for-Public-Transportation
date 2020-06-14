@@ -5,5 +5,6 @@ export const Config = {
     BUSREGISTER : '/busregister',
     RICKREGISTER : '/rickregister',
     ADDREVIEW : '/rate/addreview',
-    FINDBUSES : '/findbuses'
+    FINDBUSES : '/findbuses',
+    BOOKINGBUS:'/bookingbus'
 }

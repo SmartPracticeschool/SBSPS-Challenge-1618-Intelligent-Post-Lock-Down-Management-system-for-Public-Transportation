@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
 import BackImage from '../img/BackgroundImageForBusBooking.jpg';
-
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
@@ -38,7 +38,7 @@ const useStyles = makeStyles({
 
 export default function BusBooking(props) {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
+  // const bull = <span className={classes.bullet}>•</span>;
 
   return (
       <div className={classes.divStyle}>
@@ -59,7 +59,10 @@ export default function BusBooking(props) {
           </Grid>
       </CardContent>
       <CardActions>
-        <Button size="small" onClick={()=>{props.findBuses()}}>Find Buses</Button>
+      <Button onClick={()=>{props.findBuses()}}>
+            <p><Link to="/showbuses">Temp link to user dashboard</Link></p>
+      </Button>
+        {/* <Button size="small" onClick={()=>{props.findBuses()}}>Find Buses</Button> */}
       </CardActions>
     </Card>
     </Grid>
