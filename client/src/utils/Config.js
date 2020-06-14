@@ -4,5 +4,6 @@ export const Config = {
     USERREGISTER : '/userregister',
     BUSREGISTER : '/busregister',
     RICKREGISTER : '/rickregister',
-    ADDREVIEW : '/rate/addreview'
+    ADDREVIEW : '/rate/addreview',
+    FINDBUSES : '/findbuses'
 }

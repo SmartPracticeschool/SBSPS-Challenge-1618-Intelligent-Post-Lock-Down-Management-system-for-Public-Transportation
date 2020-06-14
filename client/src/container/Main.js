@@ -14,8 +14,9 @@ import { smartVisit } from '../components/SmartVisit';
 import  giveReview  from '../components/GiveReview';
 
 import { checkReview } from '../components/CheckReview';
-import { busBooking } from '../components/BookaBus';
+import BusBooking  from '../components/BookaBus';
 import { eRickBooking } from '../components/BookaErick';
+import axios from 'axios';
 
 class Main extends React.Component {
     constructor(props) {
@@ -32,7 +33,7 @@ class Main extends React.Component {
         // };
     }
     takeInput(event) {
-        this.inputs[event.target.name] = event.target.value;
+        this.inputs[event.target.id] = event.target.value;
     }
     handleSelectedDays(selectedDays) {
         this.inputs['scheduled_days'] = selectedDays;
@@ -99,6 +100,15 @@ class Main extends React.Component {
             .catch(e => console.log('Server Error is ', e));
     }
 
+    findBuses(){
+        var objStartEnd={"startLocation":this.inputs['startLocation'],"endLocation":this.inputs['endLocation']};
+        console.log(this.inputs);
+        console.log(objStartEnd);
+        // axios.post(Config.BASEURL + Config.FINDBUSES,objStartEnd)
+        // .then(data=>console.log("Data recevied"))
+        // .catch(err=>console.log("Error occured",err))
+    }
+
 
     // getCurrentPosition() {
     //     console.log('getposition called');
@@ -153,7 +163,7 @@ class Main extends React.Component {
                     <Route path='/smartVisit' component={smartVisit} />
                     <Route path='/giveReview' component={giveReview} />
                     <Route path='/checkReviews' component={checkReview} />
-                    <Route path='/busBooking' component={busBooking} />
+                    <Route path='/busBooking' render={() => <BusBooking takeInput={this.takeInput.bind(this)} findBuses={this.findBuses.bind(this)} />}/>
                     <Route path='/eRickBooking' component={eRickBooking} />
                 </Switch>
             </div>
