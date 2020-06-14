@@ -24,15 +24,15 @@ const useStyles = makeStyles({
   pos: {
     marginBottom: 12,
   },
-  gridContainer:{
-    paddingLeft:"40px",
-    paddingTop:"150px"
+  gridContainer: {
+    paddingLeft: "40px",
+    paddingTop: "150px"
   },
-  divStyle:{
+  divStyle: {
     width: '100%',
     height: '800px',
     backgroundImage: `url(${BackImage})`,
-    backgroundSize: 'cover'   
+    backgroundSize: 'cover'
   }
 });
 
@@ -41,31 +41,32 @@ export default function BusBooking(props) {
   // const bull = <span className={classes.bullet}>•</span>;
 
   return (
-      <div className={classes.divStyle}>
+    <div className={classes.divStyle}>
 
-    <Grid container className={classes.gridContainer}>
-    <Card className={classes.root} variant="outlined">
-      <CardContent>
-      <Typography className={classes.title} color="textSecondary" gutterBottom>
-            Enter Start And End Location
+      <Grid container className={classes.gridContainer}>
+        <Card className={classes.root} variant="outlined">
+          <CardContent>
+            <Typography className={classes.title} color="textSecondary" gutterBottom>
+              Enter Start And End Location
     </Typography>
-          <Grid container spacing={4} >
-             <Grid item sm>
-             <TextField id="startLocation" label="PickUp" onChange={props.takeInput} />
-             </Grid>
-             <Grid item sm>
-             <TextField id="endLocation" label="Drop" onChange={props.takeInput}/>
-           </Grid>
-          </Grid>
-      </CardContent>
-      <CardActions>
-      <Button onClick={()=>{props.findBuses()}}>
-            <p><Link to="/showbuses">Temp link to user dashboard</Link></p>
-      </Button>
-        {/* <Button size="small" onClick={()=>{props.findBuses()}}>Find Buses</Button> */}
-      </CardActions>
-    </Card>
-    </Grid>
+            <Grid container spacing={4} >
+              <Grid item sm>
+                <SearchLocationInput placeholder="PickUpLocation">
+                  <TextField id="startLocation" label="PickUp" onChange={props.takeInput} />
+                </SearchLocationInput>
+              </Grid>
+              <Grid item sm>
+                <SearchLocationInput placeholder="endLocation" >
+                  <TextField id="endLocation" label="Drop" onChange={props.takeInput} />
+                </SearchLocationInput>
+              </Grid>
+            </Grid>
+          </CardContent>
+          <CardActions>
+            <Button size="small" onClick={() => { props.findBuses() }}>Find Buses</Button>
+          </CardActions>
+        </Card>
+      </Grid>
     </div>
   );
 }

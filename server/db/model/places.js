@@ -17,7 +17,9 @@ var place = new Schema({
         default: null
     },
     'User_Reviews': [{
-        type: String
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'ratingCollection',
+        default: null
     }]
 
 });
