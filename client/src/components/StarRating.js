@@ -28,15 +28,20 @@ export default function HoverRating(props) {
   const [value, setValue] = React.useState(2);
   const [hover, setHover] = React.useState(-1);
   const classes = useStyles();
+  console.log(props);
 
   return (
     <div className={classes.root}>
+      1st:<br />
       <Rating
-        name="hover-feedback"
+        name={props.name}
         value={value}
         precision={0.5}
         onChange={(event, newValue) => {
+          props.onChangeP(newValue);
           setValue(newValue);
+          console.log(props.updateFxn, newValue);
+
         }}
         onChangeActive={(event, newHover) => {
           setHover(newHover);
