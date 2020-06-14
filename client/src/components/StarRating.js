@@ -24,27 +24,33 @@ const useStyles = makeStyles({
   },
 });
 
+
+
 export default function HoverRating(props) {
-  const [value, setValue] = React.useState(2);
+  const [value, setValue] = React.useState(props.value);
   const [hover, setHover] = React.useState(-1);
   const classes = useStyles();
   console.log(props);
+
+
 
   return (
     <div className={classes.root}>
       1st:<br />
       <Rating
+        readOnly={props.readOnly}
         name={props.name}
         value={value}
         precision={0.5}
         onChange={(event, newValue) => {
           props.onChangeP(newValue);
           setValue(newValue);
-          console.log(props.updateFxn, newValue);
 
         }}
         onChangeActive={(event, newHover) => {
+
           setHover(newHover);
+
         }}
       />
       {value !== null && <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>}
