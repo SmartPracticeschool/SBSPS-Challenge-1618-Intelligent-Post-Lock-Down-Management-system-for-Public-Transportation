@@ -11,7 +11,8 @@ import { UserDashboard } from '../components/userDashboard';
 import  BusDriverDashboard  from '../components/BusDriverDashboard';
 import { ERickDashboard } from '../components/eRickDriverDashboard';
 import { smartVisit } from '../components/SmartVisit';
-import { giveReview } from '../components/GiveReview';
+import  giveReview  from '../components/GiveReview';
+
 import { checkReview } from '../components/CheckReview';
 import { busBooking } from '../components/BookaBus';
 import { eRickBooking } from '../components/BookaErick';
