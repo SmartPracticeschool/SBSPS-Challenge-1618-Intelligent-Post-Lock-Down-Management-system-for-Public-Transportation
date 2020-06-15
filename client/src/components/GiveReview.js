@@ -3,10 +3,7 @@ import HoverRating from './StarRating';
 import SearchLocationInput from './smartSearch';
 
 
-// connect rating and places 
 
-export default class giveReview extends Component{
-    constructor(props){
 export default class giveReview extends Component {
     constructor(props) {
         super(props);
