@@ -2,6 +2,9 @@ import React,{Component} from 'react';
 import HoverRating from './rating';
 
 
+
+// connect rating and places 
+
 export default class giveReview extends Component{
     constructor(props){
         super(props);

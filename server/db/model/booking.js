@@ -22,6 +22,26 @@ var booking = new Schema({
     },
     'creationDate': {
         type: Date
+    },
+    'pickUp':{
+        'lat':{
+            type:String,
+            default:null
+        },
+        'long':{
+            type:String,
+            default:null
+        }
+    },
+    'drop':{
+        'lat':{
+            type:String,
+            default:null
+        },
+        'long':{
+            type:String,
+            default:null
+        }
     }
 });
 

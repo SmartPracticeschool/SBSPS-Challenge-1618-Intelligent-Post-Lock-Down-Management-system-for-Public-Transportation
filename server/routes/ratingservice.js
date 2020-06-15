@@ -12,3 +12,6 @@ route.post('/addreview',(req,res)=>{
 })
 
 module.exports = route;
+
+
+// connect rating and places

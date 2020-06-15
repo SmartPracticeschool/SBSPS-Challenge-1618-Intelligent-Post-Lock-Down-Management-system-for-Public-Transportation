@@ -45,4 +45,10 @@ function findDay(date) {
     let n = weekday[date.getDay()];
     return n;
 }
+
+route.post('/notification',(req,res)=>{
+    var distObj = req.body;
+    const notificationOperations = require("../db/helpers/notificationoperation");
+    notificationOperations.findDistance(distObj,res);
+})
 module.exports = route;
