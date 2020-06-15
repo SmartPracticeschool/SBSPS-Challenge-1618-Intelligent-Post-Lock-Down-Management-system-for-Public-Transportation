@@ -36,6 +36,11 @@ var rating = new Schema({
     'average_score': {
         type: String,
         default: null
+    },
+    'place_id': {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'placeCollection',
+        default: null
     }
 
 });

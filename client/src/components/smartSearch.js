@@ -5,6 +5,8 @@ class SearchLocationInput extends React.Component {
     constructor(props) {
         super(props);
         this.state = { address: '' };
+        // placehol = props.placeholder;
+        console.log(this.props.placeholder);
     }
 
     handleChange = address => {
@@ -28,9 +30,9 @@ class SearchLocationInput extends React.Component {
                 {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                     <div>
                         <input
-                            style={{ width: '500px' }}
+                            style={{ width: '400px' }}
                             {...getInputProps({
-                                placeholder: 'Search Places ...',
+                                placeholder: this.props.placeholder,
                                 className: 'location-search-input',
                             })}
                         />

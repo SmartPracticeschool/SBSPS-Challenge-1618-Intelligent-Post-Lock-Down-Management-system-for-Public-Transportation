@@ -8,14 +8,15 @@ import RickRegister from '../components/RickDriverRegister';
 // import { Header } from '../components/Header';
 // import io from 'socket.io-client';
 import { UserDashboard } from '../components/userDashboard';
-import  BusDriverDashboard  from '../components/BusDriverDashboard';
+import BusDriverDashboard from '../components/BusDriverDashboard';
 import { ERickDashboard } from '../components/eRickDriverDashboard';
 import { smartVisit } from '../components/SmartVisit';
-import  giveReview  from '../components/GiveReview';
+import giveReview from '../components/GiveReview';
 
-import { checkReview } from '../components/CheckReview';
-import BusBooking  from '../components/BookaBus';
+import checkReview from '../components/CheckReview';
+import BusBooking from '../components/BookaBus';
 import { eRickBooking } from '../components/BookaErick';
+import ShowBuses from '../components/ShowBuses';
 import axios from 'axios';
 
 class Main extends React.Component {
@@ -23,6 +24,8 @@ class Main extends React.Component {
         super(props);
         this.obj = {};
         this.inputs = {};
+        this.availableBuses=[];
+        this.seatBookingObj={VehicleID:"",UserID:"",price:""}
 
         // this.state = {
         //     'lat': '28.7041',
@@ -100,14 +103,27 @@ class Main extends React.Component {
             .catch(e => console.log('Server Error is ', e));
     }
 
-    findBuses(){
-        var objStartEnd={"startLocation":this.inputs['startLocation'],"endLocation":this.inputs['endLocation']};
+    findBuses() {
+        var objStartEnd = { "startLocation": this.inputs['startLocation'], "endLocation": this.inputs['endLocation'] };
         console.log(this.inputs);
         console.log(objStartEnd);
+        this.availableBuses=[{seat:"1",vehicle:"1221",price:"10"},{seat:"1",vehicle:"1221",price:"10"},{seat:"1",vehicle:"1221",price:"10"},{seat:"1",vehicle:"1221",price:"10"}];
+        //availableBusesDisplay(availableBuses);
         // axios.post(Config.BASEURL + Config.FINDBUSES,objStartEnd)
         // .then(data=>console.log("Data recevied"))
         // .catch(err=>console.log("Error occured",err))
     }
+
+    bookASeat(vehicleId,price){
+        this.seatBookingObj={VehicleID:vehicleId,price:price,UserID:"12232424"}
+        console.log("the seat booking object in main js",this.seatBookingObj);
+        // axios.post(Config.BASEURL+Config.BOOKINGBUS,this.seatBookingObj)
+        // .then(data=>{
+        //     this.seatBookingObj.SeatNo=data.SeatNo;
+        // })
+        // .catch(err=>console.log('Error occured while fetching data for seat',err))
+    }
+
 
 
     // getCurrentPosition() {
@@ -163,8 +179,9 @@ class Main extends React.Component {
                     <Route path='/smartVisit' component={smartVisit} />
                     <Route path='/giveReview' component={giveReview} />
                     <Route path='/checkReviews' component={checkReview} />
-                    <Route path='/busBooking' render={() => <BusBooking takeInput={this.takeInput.bind(this)} findBuses={this.findBuses.bind(this)} />}/>
+                    <Route path='/busBooking' render={() => <BusBooking takeInput={this.takeInput.bind(this)} findBuses={this.findBuses.bind(this)} />} />
                     <Route path='/eRickBooking' component={eRickBooking} />
+                    <Route path="/showbuses" render={() => <ShowBuses availableBuses={this.availableBuses} seatBookingObj={this.seatBookingObj} bookASeat={this.bookASeat.bind(this)}/>}></Route>
                 </Switch>
             </div>
         )
