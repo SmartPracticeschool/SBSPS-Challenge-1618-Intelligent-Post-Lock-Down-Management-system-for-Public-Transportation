@@ -42,7 +42,29 @@ class checkReview extends React.Component {
     componentDidMount() {
         console.log('axios call to fetch and setState reviews');
     }
+
+
+    onSelect(latLng, address) {
+        console.log(latLng, address);
+        //add these into respective states
+        // setvalue('4');
+        this.setState({
+            location: latLng
+        });
+    }
+
+
+
+    onChangesocial_hygiene(e) {
+
+    }
+
+    onChangesocial_distancing(e) {
+
+    }
+
     onChangesanitation_availability(e) {
+
     }
 
     render() {
@@ -50,7 +72,7 @@ class checkReview extends React.Component {
             <div>
                 check Review Component
 
-                <SearchLocationInput />
+                <SearchLocationInput onChangeP={this.onSelect.bind(this)} />
 
                 <div>
                     Social Distancing:

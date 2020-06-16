@@ -16,7 +16,7 @@ class SearchLocationInput extends React.Component {
     handleSelect = address => {
         geocodeByAddress(address)
             .then(results => getLatLng(results[0]))
-            .then(latLng => console.log('Success', latLng))         //recovering latlng from address here
+            .then(latLng => { console.log('Success', latLng); this.props.onChangeP(latLng, address) })         //recovering latlng from address here
             .catch(error => console.error('Error', error));
     };
 

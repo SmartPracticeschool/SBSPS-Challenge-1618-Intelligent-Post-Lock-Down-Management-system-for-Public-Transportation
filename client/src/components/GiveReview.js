@@ -40,6 +40,14 @@ export default class giveReview extends Component {
     //     console.log(error);
     //   })
     // }
+    onSelect(latLng, address) {
+        console.log(latLng, address);
+        //add these into respective states
+        // setvalue('4');
+        this.setState({
+            location: latLng
+        });
+    }
 
     onChangeuserId(e) {
         this.setState({
@@ -106,7 +114,7 @@ export default class giveReview extends Component {
                         <label>Place search box here </label>
                     </div>
 
-                    <SearchLocationInput />
+                    <SearchLocationInput onChangeP={this.onSelect.bind(this)} />
 
                     {/* <div className="form-group">
                         <HoverRating  />

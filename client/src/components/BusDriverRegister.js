@@ -33,6 +33,7 @@ import Select from '@material-ui/core/Select';
 import Chip from '@material-ui/core/Chip';
 import { Header } from './Header';
 import { Link } from 'react-router-dom';
+import RouteMap from './busRegisterMap';
 // function Copyright() {
 //   return (
 //     <Typography variant="body2" color="textSecondary" align="center">
@@ -317,12 +318,14 @@ export default function BusRegister(props) {
                       <Typography variant="h6" className={classes.title}>
                         Google Maps
             </Typography>
+
                       <Button autoFocus color="inherit" onClick={handleClose}>
                         Save
             </Button>
                     </Toolbar>
                   </AppBar>
                   <h1>Map Component will be here</h1>
+                  <RouteMap />
                 </Dialog>
               </Grid>
             </Grid>
