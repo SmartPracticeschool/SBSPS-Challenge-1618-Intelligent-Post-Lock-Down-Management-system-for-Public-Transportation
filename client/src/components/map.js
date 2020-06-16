@@ -3,10 +3,15 @@ import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow, Polyline } 
 class Amap extends React.Component {
 
     constructor(props) {
+
+
         super(props);
         this.state = {
-            markers: [{ lat: 28.7041, lng: 77.1025 }, { lat: 28.8041, lng: 77.1225 }, { lat: 28.6021, lng: 77.3025 }],
+            markers: this.props.posArray,
+            //[{ lat: 28.7041, lng: 77.1025 }, { lat: 28.8041, lng: 77.1225 }, { lat: 28.6021, lng: 77.3025 }],
+            loc: null
         }
+        console.log(this.props.posArray);
     }
 
     componentDidMount() {
@@ -16,12 +21,16 @@ class Amap extends React.Component {
 
     render() {
 
+        // { console.log(this.state.markers.length == 0 ? '{lat: 28.7041, lng: 77.1025}' : this.state.markers[0]) }
+
+        { console.log(this.props) }
         return (
 
-            <GoogleMap defaultZoom={8}
-                defaultCenter={{ lat: 28.7041, lng: 77.1025 }}
+            <GoogleMap defaultZoom={14}
+                key={this.props.posArray}
+                defaultCenter={this.state.markers.length == 0 ? { lat: 28.7041, lng: 77.1025 } : this.state.markers[0]}
             >
-                {this.state.markers.map(mark => (
+                {this.props.posArray.map(mark => (
                     <Marker
                         position={mark}
                         key={mark.lat}
@@ -29,7 +38,6 @@ class Amap extends React.Component {
                     // onClick={()=>this.setState({...this.state,loc:mark})}
                     />
                 ))}
-                {console.log('2nd block')}
 
                 {/* {this.state.loc&&
     <InfoWindow
@@ -46,5 +54,5 @@ class Amap extends React.Component {
     }
 
 }
-const AWrappedMap = withScriptjs(withGoogleMap(Amap));
+const AWrappedMap = withGoogleMap(Amap);
 export default AWrappedMap;

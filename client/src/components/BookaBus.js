@@ -53,12 +53,12 @@ export default function BusBooking(props) {
     </Typography>
             <Grid container spacing={4} >
               <Grid item sm>
-                <SearchLocationInput placeholder="PickUpLocation">
+                <SearchLocationInput placeholder="PickUpLocation" onChangeP={(latLng, address) => { console.log(latLng, address) }}>
                   <TextField id="startLocation" label="PickUp" onChange={props.takeInput} />
                 </SearchLocationInput>
               </Grid>
               <Grid item sm>
-                <SearchLocationInput placeholder="endLocation" >
+                <SearchLocationInput placeholder="endLocation" onChangeP={(latLng, address) => { console.log(latLng, address) }} >
                   <TextField id="endLocation" label="Drop" onChange={props.takeInput} />
                 </SearchLocationInput>
               </Grid>
@@ -66,7 +66,7 @@ export default function BusBooking(props) {
           </CardContent>
           <CardActions>
             <Button size="small" onClick={() => { props.findBuses() }}>
-            <p><Link to="/showbuses">Find Buses</Link></p>
+              <p><Link to="/showbuses">Find Buses</Link></p>
             </Button>
           </CardActions>
         </Card>

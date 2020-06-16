@@ -24,7 +24,7 @@ class RouteMap extends React.Component {
             inputLatLng: [],
 
         }
-        this.count = 0;
+
     }
 
     onSelect(latLng, address) {
@@ -35,6 +35,7 @@ class RouteMap extends React.Component {
             inputAddress: [...this.state.inputAddress, address],
             inputLatLng: [...this.state.inputLatLng, latLng]
         })
+        console.log(this.state);
     }
 
     render() {
@@ -47,11 +48,11 @@ class RouteMap extends React.Component {
                 <List className={useStyles.root}>
 
                     {
-                        this.state.inputAddress.map((r) => {
+                        this.state.inputAddress.map((r, index) => {
                             return (<>
                                 <ListItem alignItems="flex-start">
                                     <ListItemText
-                                        primary={this.count++}
+                                        primary={index + 1}
                                         secondary={
                                             <React.Fragment>
                                                 {r}
@@ -71,10 +72,11 @@ class RouteMap extends React.Component {
                 <div style={{ color: "white" }}>
                     <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Real Time Locations for all Registered Employees</h3>
                     <AWrappedMap
-                        googleMapURL={"https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places,visualization"}
+                        //   googleMapURL={"https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,visualization"}
                         loadingElement={< div style={{ height: `100%` }} />}
                         containerElement={<div style={{ height: `400px` }} />}
                         mapElement={<div style={{ height: `100%` }} />}
+                        posArray={this.state.inputLatLng}
                     />
 
                 </div>
