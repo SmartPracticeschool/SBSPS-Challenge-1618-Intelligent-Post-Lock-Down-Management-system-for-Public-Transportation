@@ -36,7 +36,7 @@ export default function HoverRating(props) {
 
   return (
     <div className={classes.root}>
-      1st:<br />
+
       <Rating
         readOnly={props.readOnly}
         name={props.name}

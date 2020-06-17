@@ -1,8 +1,26 @@
 import React, { Component } from 'react';
 import HoverRating from './StarRating';
 import SearchLocationInput from './smartSearch';
+import { makeStyles } from '@material-ui/core/styles';
+
+import Divider from '@material-ui/core/Divider';
+
+import Typography from '@material-ui/core/Typography';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Container from '@material-ui/core/Container';
 
 
+
+const useStyles = makeStyles(theme => ({
+    root: {
+        width: '100%',
+        maxWidth: 360,
+        backgroundColor: theme.palette.background.paper,
+    },
+    inline: {
+        display: 'inline',
+    },
+}));
 
 export default class giveReview extends Component {
     constructor(props) {
@@ -108,48 +126,48 @@ export default class giveReview extends Component {
     render() {
         return (
             <div>
-                <h3>ADD A Review</h3>
-                <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <label>Place search box here </label>
-                    </div>
+                <Container maxWidth="md" className={useStyles.root}>
+                    <h1>ADD A Review</h1>
+                    <form onSubmit={this.onSubmit}>
+                        <div className="form-group">
+                            <label>Search for a Place: </label>
+                        </div>
 
-                    <SearchLocationInput onChangeP={this.onSelect.bind(this)} />
+                        <SearchLocationInput onChangeP={this.onSelect.bind(this)} />
+                        <br />
+                        <Divider variant="inset" />
+                        <br />
+                        <br />
 
-                    {/* <div className="form-group">
-                        <HoverRating  />
-                    </div>
+                        <div className="form-group">
+                            <label>Social Distancing: </label>
+                            <HoverRating name="socialDistancing" onChangeP={this.onChangesocial_distancing} value={2.5} readOnly={false} />
+                        </div>
+                        <Divider variant="inset" />
+                        <div className="form-group">
+                            <label>Social hygiene: </label>
+                            <HoverRating name="socialHygiene" onChangeP={this.onChangesocial_hygiene} value={2.5} readOnly={false} />
+                        </div>
 
-                    <div className="form-group">
-                        <HoverRating2 />
-                    </div> */}
-                    <div className="form-group">
-                        <label>Social Distancing: </label>
-                        <HoverRating name="socialDistancing" onChangeP={this.onChangesocial_distancing} value={2.5} readOnly={false} />
-                    </div>
+                        <Divider variant="inset" />
+                        <div className="form-group">
+                            <label>Sanitation Availability: </label>
+                            <HoverRating name="sanitization" onChangeP={this.onChangesanitation_availability} value={2.5} readOnly={false} />
+                        </div>
+                        <Divider variant="inset" />
+                        <div className="form-group">
+                            <label>Remarks: </label>
+                            <input type="text" className="form-control" value={this.state.remarks} onChange={this.onChangeremarks} />
+                        </div>
 
-                    <div className="form-group">
-                        <label>Social hygiene: </label>
-                        <HoverRating name="socialHygiene" onChangeP={this.onChangesocial_hygiene} value={2.5} readOnly={false} />
-                    </div>
+                        {/* <Divider variant="inset" /> */}
 
-
-                    <div className="form-group">
-                        <label>Sanitation Availability: </label>
-                        <HoverRating name="sanitization" onChangeP={this.onChangesanitation_availability} value={2.5} readOnly={false} />
-                    </div>
-
-                    <div className="form-group">
-                        <label>Remarks: </label>
-                        <input type="text" className="form-control" value={this.state.remarks} onChange={this.onChangeremarks} />
-                    </div>
-
-
-
-                    <div className="form-group">
-                        <input type="submit" value="Add Review" className="btn btn-primary" />
-                    </div>
-                </form>
+                        <br />
+                        <div className="form-group">
+                            <input type="submit" value="Add Review" className="btn btn-primary" />
+                        </div>
+                    </form>
+                </Container>
             </div>
         );
     }
@@ -162,13 +180,3 @@ export default class giveReview extends Component {
 
 
 
-
-
-// export const giveReview = () => {
-//     return (
-//         <div>
-//             give Review Component
-
-//         </div>
-//     )
-// }

@@ -324,7 +324,7 @@ export default function BusRegister(props) {
             </Button>
                     </Toolbar>
                   </AppBar>
-                  <h1>Map Component will be here</h1>
+
                   <RouteMap />
                 </Dialog>
               </Grid>
