@@ -22,6 +22,7 @@
     "google-distance-matrix": "^1.1.1",
     "googleapis": "^52.1.0",
     "mongoose": "^5.9.18",
+    "nodemailer": "^6.4.10",
     "password-hash": "^1.2.2",
     "socket.io": "^2.3.0"
   }

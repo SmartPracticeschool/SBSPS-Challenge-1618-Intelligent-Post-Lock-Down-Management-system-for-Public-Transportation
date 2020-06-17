@@ -42,6 +42,16 @@ var booking = new Schema({
             type:String,
             default:null
         }
+    },
+    'userLocation':{
+        'lat':{
+            type:String,
+            default:null
+        },
+        'long':{
+            type:String,
+            default:null
+        }
     }
 });
 
