@@ -51,4 +51,11 @@ route.post('/notification',(req,res)=>{
     const notificationOperations = require("../db/helpers/notificationoperation");
     notificationOperations.findDistance(distObj,res);
 })
+
+route.post('/addreview',(req,res)=>{
+    var reviewObj=req.body;
+    const placeOperations=require("../db/helpers/placeoperation");
+    placeOperations.findPlace(reviewObj);
+})
+
 module.exports = route;

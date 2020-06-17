@@ -1,14 +1,16 @@
 const ratingCollection = require('../model/ratings');
+const placeOperations=require('../helpers/placeoperation');
 
 const ratingOperations = {
     add(ratingObj,res){
-        ratingCollection.create(ratingObj,(err)=>{
+        ratingCollection.create(ratingObj,(err,data)=>{
             if(err){
                 console.log("Error while adding review");
             }
             else{
                 console.log("Review is added successfully-------");
-                res.send(ratingObj);
+                placeOperations.findToPushReview(data);
+                //res.send(ratingObj);
             }
         })
     }
