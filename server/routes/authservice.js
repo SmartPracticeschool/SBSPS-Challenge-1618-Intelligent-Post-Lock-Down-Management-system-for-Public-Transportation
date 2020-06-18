@@ -52,6 +52,21 @@ route.post('/notification',(req,res)=>{
     notificationOperations.findDistance(distObj,res);
 })
 
+
+route.post('/rickregister', (req, res) => {
+    var erickObj = req.body;
+    const erickOperations = require('../db/helpers/erickoperation');
+    erickOperations.add(erickObj,res);
+})
+
+
+route.post('/findrick', (req, res) => {
+    var erickObj = req.body;
+    const erickOperations = require('../db/helpers/erickoperation');
+    erickOperations.findErick(erickObj,res);
+})
+
+
 route.post('/addreview',(req,res)=>{
     var reviewObj=req.body;
     const placeOperations=require("../db/helpers/placeoperation");
