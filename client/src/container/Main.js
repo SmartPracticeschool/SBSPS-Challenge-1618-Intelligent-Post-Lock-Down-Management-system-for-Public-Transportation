@@ -9,7 +9,7 @@ import RickRegister from '../components/RickDriverRegister';
 // import io from 'socket.io-client';
 import { UserDashboard } from '../components/userDashboard';
 import BusDriverDashboard from '../components/BusDriverDashboard';
-import { ERickDashboard } from '../components/eRickDriverDashboard';
+import ERickDashboard from '../components/eRickDriverDashboard';
 import { smartVisit } from '../components/SmartVisit';
 import giveReview from '../components/GiveReview';
 
@@ -24,8 +24,8 @@ class Main extends React.Component {
         super(props);
         this.obj = {};
         this.inputs = {};
-        this.availableBuses=[];
-        this.seatBookingObj={VehicleID:"",UserID:"",price:""}
+        this.availableBuses = [];
+        this.seatBookingObj = { VehicleID: "", UserID: "", price: "" }
 
         // this.state = {
         //     'lat': '28.7041',
@@ -107,16 +107,16 @@ class Main extends React.Component {
         var objStartEnd = { "startLocation": this.inputs['startLocation'], "endLocation": this.inputs['endLocation'] };
         console.log(this.inputs);
         console.log(objStartEnd);
-        this.availableBuses=[{seat:"1",vehicle:"1221",price:"10"},{seat:"1",vehicle:"1221",price:"10"},{seat:"1",vehicle:"1221",price:"10"},{seat:"1",vehicle:"1221",price:"10"}];
+        this.availableBuses = [{ seat: "1", vehicle: "1221", price: "10" }, { seat: "1", vehicle: "1221", price: "10" }, { seat: "1", vehicle: "1221", price: "10" }, { seat: "1", vehicle: "1221", price: "10" }];
         //availableBusesDisplay(availableBuses);
         // axios.post(Config.BASEURL + Config.FINDBUSES,objStartEnd)
         // .then(data=>console.log("Data recevied"))
         // .catch(err=>console.log("Error occured",err))
     }
 
-    bookASeat(vehicleId,price){
-        this.seatBookingObj={VehicleID:vehicleId,price:price,UserID:"12232424"}
-        console.log("the seat booking object in main js",this.seatBookingObj);
+    bookASeat(vehicleId, price) {
+        this.seatBookingObj = { VehicleID: vehicleId, price: price, UserID: "12232424" }
+        console.log("the seat booking object in main js", this.seatBookingObj);
         // axios.post(Config.BASEURL+Config.BOOKINGBUS,this.seatBookingObj)
         // .then(data=>{
         //     this.seatBookingObj.SeatNo=data.SeatNo;
@@ -181,7 +181,7 @@ class Main extends React.Component {
                     <Route path='/checkReviews' component={checkReview} />
                     <Route path='/busBooking' render={() => <BusBooking takeInput={this.takeInput.bind(this)} findBuses={this.findBuses.bind(this)} />} />
                     <Route path='/eRickBooking' component={eRickBooking} />
-                    <Route path="/showbuses" render={() => <ShowBuses availableBuses={this.availableBuses} seatBookingObj={this.seatBookingObj} bookASeat={this.bookASeat.bind(this)}/>}></Route>
+                    <Route path="/showbuses" render={() => <ShowBuses availableBuses={this.availableBuses} seatBookingObj={this.seatBookingObj} bookASeat={this.bookASeat.bind(this)} />}></Route>
                 </Switch>
             </div>
         )
