@@ -2,6 +2,7 @@ const busCollection = require('../model/bus');
 // const seatCollection = require('../model/seat');
 var passwordHash = require("password-hash");
 const seatOperations = require("./seatoperation");
+const erickOperations=require("../helpers/erickoperation");
 
 const busOperation = {
     add(busObj, res) {
@@ -56,6 +57,28 @@ const busOperation = {
                     }
                 }
                 res.send(availableBuses);
+            }
+        })
+    },
+
+    loginBus(loginObj,res){
+        busCollection.findOne({'email':loginObj.email},(err,doc)=>{
+            if(err){
+                console.log("Error while finding the bus driver");
+            }
+            else if(doc){
+                var result=passwordHash.verify(loginObj.password.doc.password);
+                if(result){
+                    console.log("User found in bus schema");
+                    res.json({"loginObj":doc});
+                }
+                else{
+                    console.log("Invalid user name or password in bus schema");
+                }
+            }
+            else{
+                console.log("User not found in bus operations");
+                erickOperations.loginErick(loginObj,res);
             }
         })
     }

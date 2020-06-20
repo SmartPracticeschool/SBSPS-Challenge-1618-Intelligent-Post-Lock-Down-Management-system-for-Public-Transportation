@@ -66,6 +66,12 @@ route.post('/findrick', (req, res) => {
     erickOperations.findErick(erickObj,res);
 })
 
+route.post('/dologin',(req,res)=>{
+    var loginObj=req.body;
+    const userOperations=require('../db/helpers/useroperation');
+    userOperations.loginUser(loginObj,res);
+})
+
 
 route.post('/addreview',(req,res)=>{
     var reviewObj=req.body;

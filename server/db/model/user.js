@@ -7,8 +7,14 @@ var user = new Schema({
     'name': {
         type: String
     },
+    'email':{
+        type:String
+    },
     'password': {
         type: String
+    },
+    'role':{
+        default:'user'
     },
     'creationDate': {
         type: Date

@@ -9,15 +9,38 @@ const erickOperation = {
         erickObj.password = hash;
         erickCollection.create(erickObj, (err) => {
             if (err) {
-                //res.send("Error while adding E-rickshaw driver");
+                res.send("Error while adding E-rickshaw driver");
                 console.log("Error while adding the E-rickshaw driver", err);
             }
             else {
                 console.log("The E-rickshaw driver has been registered successfully");
-                //res.send("Record Added....");
+                res.send("Record Added....");
             }
         })
     },
+
+
+    loginErick(loginObj,res){
+        erickCollection.findOne({'email':loginObj.email},(err,doc)=>{
+            if(err){
+                console.log("Error while finding the user in erick collection");
+            }
+            else if(doc){
+                var result=passwordHash.verify(loginObj.password,doc.password);
+                if(result){
+                    res.json({"loginObj":doc});
+                }
+                else{
+                    console.log("Invalid userid or password in erick collection");
+                }
+            }
+            else{
+                console.log("Invalid userid or password");
+            }
+        })
+    },
+
+
 
     findErick(erickObj,res){
           var origins = ["28.6296,77.0802","28.7367,77.1121","28.6098,77.1074"];                     //Erick location

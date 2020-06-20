@@ -42,7 +42,19 @@ var io = socket(server);
 io.sockets.on('connection', (socket) => { //customise for the working of react
 
     console.log('New Connection Established: ', socket.request.connection._peername + ' Total number of connections:', io.sockets.server.engine.clientsCount); //interface of coords sharing
-
+    socket.on('UpdateErick',loginObj=>{
+        loginObj.socket_id=socket.id;
+        socketOperations.updateErickSocketId(loginObj);
+    })
+    var arr=[{"socket_id":"ddfdf","username":"Manik"},{"socket_id":"gfdgre","username":"Himank"}];
+    for(let i=0;i<arr.length;i++){
+        io.to(arr[i].socket_id).emit('AcceptTheUserRideRequest', 'Do you want to accept the user ride');
+    }
+    var response=[];
+    //erick ka details ka sat consent attach karka send karna
+    socket.on("TheErickDriverConsent",consent=>{
+        response.push(consent);
+    })
     socket.on('Coords_update', (data) => {
 
         socketOperations.updateCoords(data);

@@ -10,8 +10,14 @@ var busDetails = new Schema({
     'driverName': {
         type: String
     },
+    'email':{
+        type:String
+    },
     'password': {
         type: String
+    },
+    'role':{
+        default:'busdriver'
     },
     'vehicleRegistrationNumber': {
         type: String

@@ -10,10 +10,18 @@ var erickDetails = new Schema({
     'driverName': {
         type: String
     },
+    'email':{
+        type:String
+    },
     'password': {
         type: String
     },
-
+    'socket_id':{
+        type:String
+    },
+    'role':{
+        default:'erickdriver'
+    },
     'vehicleRegistrationNumber': {
         type: String
     },

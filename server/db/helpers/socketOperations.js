@@ -69,7 +69,19 @@ var socketOperations = {
             }
         })
 
+    },
+
+    updateErickSocketId(loginObj){
+        erickCollection.updateOne({'email':loginObj.email},{$set:loginObj},(err)=>{
+            if(err){
+                console.log("Error occured while updating the erick socket id");
+            }
+            else{
+                console.log("Erick socket id successfully updated");
+            }
+        })
     }
+
 
 
 }
