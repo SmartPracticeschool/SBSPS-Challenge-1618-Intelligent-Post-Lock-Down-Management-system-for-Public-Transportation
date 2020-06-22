@@ -20,6 +20,7 @@ var erickDetails = new Schema({
         type:String
     },
     'role':{
+        type:String,
         default:'erickdriver'
     },
     'vehicleRegistrationNumber': {

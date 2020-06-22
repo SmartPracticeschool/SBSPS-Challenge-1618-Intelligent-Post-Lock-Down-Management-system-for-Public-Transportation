@@ -17,6 +17,7 @@ var busDetails = new Schema({
         type: String
     },
     'role':{
+        type:String,
         default:'busdriver'
     },
     'vehicleRegistrationNumber': {

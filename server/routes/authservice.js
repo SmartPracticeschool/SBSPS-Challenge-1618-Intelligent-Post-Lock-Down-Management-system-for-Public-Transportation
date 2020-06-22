@@ -46,6 +46,13 @@ function findDay(date) {
     return n;
 }
 
+route.post('/findstop',(req,res)=>{
+    var userObject = req.body;
+    const busstopOperation = require('../db/helpers/busstopoperation');
+    busstopOperation.findStop(userObject,res);
+})
+
+
 route.post('/notification',(req,res)=>{
     var distObj = req.body;
     const notificationOperations = require("../db/helpers/notificationoperation");
