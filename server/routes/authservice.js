@@ -68,9 +68,9 @@ route.post('/rickregister', (req, res) => {
 
 
 route.post('/findrick', (req, res) => {
-    var erickObj = req.body;
+    var userObject = req.body;
     const erickOperations = require('../db/helpers/erickoperation');
-    erickOperations.findErick(erickObj,res);
+    erickOperations.findErick(userObject,res);
 })
 
 route.post('/dologin',(req,res)=>{
