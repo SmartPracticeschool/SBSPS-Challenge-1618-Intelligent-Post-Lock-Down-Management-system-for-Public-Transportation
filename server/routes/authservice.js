@@ -54,9 +54,8 @@ route.post('/findstop',(req,res)=>{
 
 
 route.post('/notification',(req,res)=>{
-    var distObj = req.body;
     const notificationOperations = require("../db/helpers/notificationoperation");
-    notificationOperations.findDistance(distObj,res);
+    notificationOperations.calculateArrivalTime(res);
 })
 
 
