@@ -8,6 +8,7 @@ import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
+import {HeaderUser} from './HeaderUser';
 
 
 
@@ -125,6 +126,10 @@ export default class giveReview extends Component {
 
     render() {
         return (
+            <>
+            <div>
+                <HeaderUser/>
+            </div>
             <div>
                 <Container maxWidth="md" className={useStyles.root}>
                     <h1>ADD A Review</h1>
@@ -169,6 +174,7 @@ export default class giveReview extends Component {
                     </form>
                 </Container>
             </div>
+            </>
         );
     }
 }
