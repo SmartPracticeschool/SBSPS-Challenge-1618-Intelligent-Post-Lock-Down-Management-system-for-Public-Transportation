@@ -8,7 +8,7 @@ const placeOperations={
                 console.log("Error while finding a particular place ",err);
             }
             else{
-                review.place_id=doc._id;
+                reviewObj.place_id=doc._id;
                 console.log("Calling the update function of places");
                 ratingOperations.add(reviewObj);
             }

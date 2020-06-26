@@ -10,6 +10,7 @@ import TextField from '@material-ui/core/TextField'
 import BackImage from '../img/BackgroundImageForBusBooking.jpg';
 import SearchLocationInput from './smartSearch';
 import { Link } from 'react-router-dom';
+import {HeaderUser} from './HeaderUser';
 
 const useStyles = makeStyles({
   root: {
@@ -43,6 +44,10 @@ export default function BusBooking(props) {
   const bull = <span className={classes.bullet}>•</span>;
 
   return (
+    <>
+    <div>
+      <HeaderUser/>
+    </div>
     <div className={classes.divStyle}>
 
       <Grid container className={classes.gridContainer}>
@@ -72,5 +77,6 @@ export default function BusBooking(props) {
         </Card>
       </Grid>
     </div>
+    </>
   );
 }

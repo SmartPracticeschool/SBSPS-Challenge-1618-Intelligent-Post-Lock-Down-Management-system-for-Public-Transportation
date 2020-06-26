@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Config } from '../utils/Config';
 import HoverRating from './StarRating';
 import SearchLocationInput from './smartSearch';
 import { makeStyles } from '@material-ui/core/styles';
@@ -8,6 +9,7 @@ import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
+import {HeaderUser} from './HeaderUser';
 
 
 
@@ -25,7 +27,7 @@ const useStyles = makeStyles(theme => ({
 export default class giveReview extends Component {
     constructor(props) {
         super(props);
-        this.onChangeuserId = this.onChangeuserId.bind(this);
+        //this.onChangeuserId = this.onChangeuserId.bind(this);
         this.onChangelocation = this.onChangelocation.bind(this);
         this.onChangesocial_hygiene = this.onChangesocial_hygiene.bind(this);
         this.onChangesocial_distancing = this.onChangesocial_distancing.bind(this);
@@ -35,7 +37,7 @@ export default class giveReview extends Component {
 
 
         this.state = {
-            userId: '',
+            //userId: '',
             location: '',
             social_hygiene: 2,
             social_distancing: 2,
@@ -47,7 +49,7 @@ export default class giveReview extends Component {
 
 
     // componentDidMount(){
-    //     axios.get('http://localhost:1234/url_for_userID_from_usercollection').then(response => {
+    //     axios.get('http://localhost:1234/dologin').then(response => {
     //     if (response.data.length > 0) {
     //       this.setState({
     //         users: response.data.map(user => user.userId),
@@ -67,11 +69,11 @@ export default class giveReview extends Component {
         });
     }
 
-    onChangeuserId(e) {
-        this.setState({
-            userId: e.target.value
-        });
-    }
+    // onChangeuserId(e) {
+    //     this.setState({
+    //         userId: e.target.value
+    //     });
+    // }
 
     onChangelocation(e) {
         this.setState({
@@ -111,7 +113,7 @@ export default class giveReview extends Component {
         e.preventDefault();
 
         const rating = {
-            userId: this.state.userId,
+            //userId: this.state.userId,
             location: this.state.location,
             social_hygiene: this.state.social_hygiene,
             social_distancing: this.state.social_distancing,
@@ -119,12 +121,19 @@ export default class giveReview extends Component {
             remarks: this.state.remarks,
         }
         console.log(rating);
-        // axios.post('http://localhost:1234/url_of_add_review',rating).then(res=>console.log(res.data));
+        // axios.post(Config.BASEURL + Config.ADDREVIEW,rating)
+        // .then(data=>console.log("Data recevied"))
+        // .catch(err=>console.log("Error occured",err))
+        
         // window.location='/url_of_Showreview';
     }
 
     render() {
         return (
+            <>
+            <div>
+                <HeaderUser/>
+            </div>
             <div>
                 <Container maxWidth="md" className={useStyles.root}>
                     <h1>ADD A Review</h1>
@@ -138,6 +147,11 @@ export default class giveReview extends Component {
                         <Divider variant="inset" />
                         <br />
                         <br />
+
+                        {/* <div className="form-group"> 
+                            <label>UserId: </label>
+                            <input  type="text" required className="form-control" value={this.state.userId} onChange={this.onChangeuserId}/>
+                        </div> */}
 
                         <div className="form-group">
                             <label>Social Distancing: </label>
@@ -169,6 +183,7 @@ export default class giveReview extends Component {
                     </form>
                 </Container>
             </div>
+            </>
         );
     }
 }

@@ -11,6 +11,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
+import {HeaderUser} from './HeaderUser';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -70,6 +71,10 @@ class checkReview extends React.Component {
 
     render() {
         return (
+            <>
+            <div>
+                <HeaderUser/>
+            </div>
             <div>
 
                 <Container maxWidth="md">
@@ -121,6 +126,7 @@ class checkReview extends React.Component {
                     </List>
                 </Container>
             </div>
+            </>
         )
     }
 }

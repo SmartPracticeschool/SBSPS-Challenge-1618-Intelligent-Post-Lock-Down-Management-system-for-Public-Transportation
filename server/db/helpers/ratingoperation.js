@@ -5,7 +5,7 @@ const ratingOperations = {
     add(ratingObj,res){
         ratingCollection.create(ratingObj,(err,data)=>{
             if(err){
-                console.log("Error while adding review");
+                console.log("Error while adding review",err);
             }
             else{
                 console.log("Review is added successfully-------");
