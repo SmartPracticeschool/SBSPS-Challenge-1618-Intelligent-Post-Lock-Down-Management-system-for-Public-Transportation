@@ -15,7 +15,7 @@ const busOperation = {
             }
             else {
                 console.log("The bus driver has been registered successfully");
-                // res.send("Record Added....");
+                // res.json({"msg" : "Record Added...."});
             }
         })
         for (let i = 0; i < busObj.totalSeats; i++) {
@@ -25,7 +25,8 @@ const busOperation = {
             seatObj.busId = busObj.vehicleRegistrationNumber;
             seatOperations.addSeat(seatObj);
         }
-        res.send("Registered and seat added successfully");
+        console.log("Registered and seat added successfully");
+        res.json({"msg" : "Registered successfully"});
     },
     findBuses(userObject, res) {
         busCollection.find({}, (err, doc) => {
@@ -62,18 +63,20 @@ const busOperation = {
     },
 
     loginBus(loginObj,res){
+        console.log(loginObj);
         busCollection.findOne({'email':loginObj.email},(err,doc)=>{
             if(err){
                 console.log("Error while finding the bus driver");
             }
             else if(doc){
-                var result=passwordHash.verify(loginObj.password.doc.password);
+                var result=passwordHash.verify(loginObj.password,doc.password);
                 if(result){
                     console.log("User found in bus schema");
-                    res.json({"loginObj":doc});
+                    res.json({"loginObj":doc ,"isLoggedIn" : true});
                 }
                 else{
                     console.log("Invalid user name or password in bus schema");
+                    res.json({"msg":"Invalid userid or password"});
                 }
             }
             else{

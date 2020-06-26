@@ -15,6 +15,7 @@ route.post('/busregister', (req, res) => {
 
 route.post('/userregister', (req, res) => {
     var userObj = req.body;
+    console.log(userObj);
     //userObj.creationDate=Date.now();
     const userOperations = require("../db/helpers/useroperation");
     userOperations.addUser(userObj, res);

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Layout, Menu, Breadcrumb } from 'antd';
-import {SettingOutlined} from '@ant-design/icons';
+import { Layout, Menu } from 'antd';
+// import {SettingOutlined} from '@ant-design/icons';
 import './HeaderUSer.css';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
-const { Header, Content, Footer } = Layout;
+const { Header} = Layout;
 const { SubMenu } = Menu;
 
 export const HeaderUser=()=>{

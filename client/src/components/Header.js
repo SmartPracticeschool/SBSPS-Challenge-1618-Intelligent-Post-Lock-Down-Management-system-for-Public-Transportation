@@ -5,7 +5,7 @@ export const Header = () => {
         <div>
             <nav className="navbar navbar-dark bg-dark">
                 <div className="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">
-                    <p className="navbar-brand">Booking System</p>
+                    <p className="navbar-brand">Smart Travel</p>
                     <div className="collapse navbar-collapse" id="navbarCollapse">
                         <NavLink activeClassName='active' exact to='/'>Login</NavLink>
                         &nbsp;&nbsp;&nbsp;&nbsp;

@@ -96,7 +96,7 @@ export default function SignIn(props) {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={props.userRegister}
+            onClick={props.login}
           >
             Sign In
           </Button>

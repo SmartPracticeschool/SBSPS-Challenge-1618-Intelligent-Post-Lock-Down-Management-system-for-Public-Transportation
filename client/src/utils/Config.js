@@ -1,6 +1,6 @@
 export const Config = {
     BASEURL : 'http://localhost:1234',
-    LOGIN : '/login',
+    LOGIN : '/dologin',
     USERREGISTER : '/userregister',
     BUSREGISTER : '/busregister',
     RICKREGISTER : '/rickregister',
