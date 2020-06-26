@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow, Polyline } from 'react-google-maps';
+import React from 'react';
+// import {withScriptjs, InfoWindow, Polyline} from ' react';
+import {  withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 class Amap extends React.Component {
 
     constructor(props) {
@@ -23,12 +24,12 @@ class Amap extends React.Component {
 
         // { console.log(this.state.markers.length == 0 ? '{lat: 28.7041, lng: 77.1025}' : this.state.markers[0]) }
 
-        { console.log(this.props) }
+        console.log(this.props)
         return (
 
             <GoogleMap defaultZoom={14}
                 key={this.props.posArray}
-                defaultCenter={this.state.markers.length == 0 ? { lat: 28.7041, lng: 77.1025 } : this.state.markers[0]}
+                defaultCenter={this.state.markers.length === 0 ? { lat: 28.7041, lng: 77.1025 } : this.state.markers[0]}
             >
                 {this.props.posArray.map(mark => (
                     <Marker

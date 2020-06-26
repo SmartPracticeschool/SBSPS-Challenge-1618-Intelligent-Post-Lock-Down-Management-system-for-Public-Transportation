@@ -17,7 +17,7 @@ import checkReview from '../components/CheckReview';
 import BusBooking from '../components/BookaBus';
 import { eRickBooking } from '../components/BookaErick';
 import ShowBuses from '../components/ShowBuses';
-import axios from 'axios';
+// import axios from 'axios';
 
 class Main extends React.Component {
     constructor(props) {
@@ -51,9 +51,20 @@ class Main extends React.Component {
         }).then(response => response.json()
             .then(data => {
                 console.log('Data is ', data);
-
                 //if login successful, update state with clientID and role(user,busDriver,erickDriver)
-
+                if (data.isLoggedIn) {
+                    let loginObj = data.loginObj;
+                    let role = loginObj.role;
+                    let clientID = (role === "user") ? loginObj.name : loginObj.driverName;
+                    localStorage.clientID = clientID;
+                    localStorage.role = role;
+                    this.setState({ "clientID": clientID, "role": role });
+                    let redirectUrl = (role === "user") ? "userDashboard" : (role === "busdriver") ? "busDashboard" : "eRickDashboard";
+                    this.props.history.push(redirectUrl);
+                }
+                else {
+                    alert("Invalid UserId or password");
+                }
             })
             .catch(err => console.log('Json Error is ', err)))
             .catch(e => console.log('Server Error is ', e));
@@ -62,7 +73,7 @@ class Main extends React.Component {
         console.log('User Register Call');
         // let fullName=this.inputs['firstName']+this.inputs['lastName'];
         // console.log('The value of fullName ',fullName);
-        var userObject = { "name": this.inputs['firstName'] + this.inputs['lastName'], "email": this.inputs['email'], "password": this.inputs['password'], "creationDate": new Date(), "phoneNumber": this.inputs['phoneno'] };
+        var userObject = { "name": this.inputs['firstName'] + " " + this.inputs['lastName'], "email": this.inputs['email'], "password": this.inputs['password'], "creationDate": new Date(), "phoneNumber": this.inputs['phoneno'] };
         console.log('The value of userObject is ', userObject);
         fetch(Config.BASEURL + Config.USERREGISTER, {
             method: 'POST', headers: {
@@ -71,6 +82,7 @@ class Main extends React.Component {
         }).then(response => response.json()
             .then(data => {
                 console.log('Data is ', data);
+                alert(data.msg);
             })
             .catch(err => console.log('Json Error is ', err)))
             .catch(e => console.log('Server Error is ', e));
@@ -85,6 +97,7 @@ class Main extends React.Component {
         }).then(response => response.json()
             .then(data => {
                 console.log('Data is ', data);
+                alert(data.msg);
             })
             .catch(err => console.log('Json Error is ', err)))
             .catch(e => console.log('Server Error is ', e));
@@ -98,6 +111,7 @@ class Main extends React.Component {
         }).then(response => response.json()
             .then(data => {
                 console.log('Data is ', data);
+                alert(data.msg);
             })
             .catch(err => console.log('Json Error is ', err)))
             .catch(e => console.log('Server Error is ', e));

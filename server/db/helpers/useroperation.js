@@ -9,10 +9,10 @@ const userOperations={
         userCollection.create(userObj,(err)=>{
             if(err){
                 console.log("error while adding a user",err);
-                res.send("error while adding a user ");
+                res.json({"msg":"error while adding a user "});
             }
             else{
-                res.send("User added successfully");
+                res.send({"msg" : "Registered Successfully"});
             }
         })
     },
@@ -21,14 +21,16 @@ const userOperations={
         userCollection.findOne({'email':loginObj.email},(err,doc)=>{
             if(err){
                 console.log("Error occured during searching in db");
+                res.json({"msg" : "Error occured during searching in db"})
             }
             else if(doc){
                 var result=passwordHash.verify(loginObj.password,doc.password);
                 if(result){
-                    res.json({"loginObj":doc});
+                    res.json({"loginObj":doc , "isLoggedIn" : true});
                 }
                 else{
                     console.log("Invalid userid or password in user schema");
+                    res.json({"msg":"Invalid userid or password"});   
                 }
             }
             else{

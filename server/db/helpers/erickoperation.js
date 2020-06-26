@@ -15,7 +15,7 @@ const erickOperation = {
             }
             else {
                 console.log("The E-rickshaw driver has been registered successfully");
-                res.send("Record Added....");
+                res.json({"msg" : "Registerd Successfully"});
             }
         })
     },
@@ -27,14 +27,16 @@ const erickOperation = {
             else if (doc) {
                 var result = passwordHash.verify(loginObj.password, doc.password);
                 if (result) {
-                    res.json({ "loginObj": doc });
+                    res.json({ "loginObj": doc , "isLoggedIn" : true});
                 }
                 else {
                     console.log("Invalid userid or password in erick collection");
+                    res.json({"msg":"Invalid userid or password"});
                 }
             }
             else {
                 console.log("Invalid userid or password");
+                res.json({"isLogged" : false});
             }
         })
     },
