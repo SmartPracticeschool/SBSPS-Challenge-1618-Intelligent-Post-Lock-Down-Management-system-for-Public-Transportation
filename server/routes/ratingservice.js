@@ -3,15 +3,10 @@ const ratingCollection = require('../db/model/ratings');
 
 const route = express.Router();
 
-//Add a review 
-
 route.post('/addreview',(req,res)=>{
-    var ratingObj = req.body;
-    const ratingOperations = require('../db/helpers/ratingoperation');
-    ratingOperations.add(ratingObj,res);
+    var reviewObj=req.body;
+    const placeOperations=require("../db/helpers/placeoperation");
+    placeOperations.findPlace(reviewObj);
 })
 
 module.exports = route;
-
-
-// connect rating and places

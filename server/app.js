@@ -27,6 +27,7 @@ app.get('/', (req, res) => {
 });
 app.use('/', require('./routes/authservice'));
 //app.use('/auth', require('./route/authservice'));
+app.use('/book',require('./routes/bookingservice'));
 app.use('/rate',require('./routes/ratingservice'));
 //
 //
