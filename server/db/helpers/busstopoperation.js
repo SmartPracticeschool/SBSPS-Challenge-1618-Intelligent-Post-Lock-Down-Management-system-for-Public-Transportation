@@ -15,7 +15,7 @@ const busstopOperation = {
                     let currBus = allBuses[i];
                     let coordinates = currBus.CoordinatesBusStop;
                         for (let j = 0; j < coordinates.length; j++) {
-                                availableStops.push(new Object({"lat":coordinates[j].lat,"long":coordinates[j].long}));
+                                availableStops.push(new Object({"lat":coordinates[j].lat,"long":coordinates[j].long,"address":coordinates[j].address}));
                         }
                 }
 
