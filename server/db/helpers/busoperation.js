@@ -21,6 +21,7 @@ const busOperation = {
         for (let i = 0; i < busObj.totalSeats; i++) {
             // console.log("Number of iteration ",i);
             var seatObj = {};
+            seatObj.seatNumber=i+1;
             seatObj.price = busObj.price;
             seatObj.busId = busObj.vehicleRegistrationNumber;
             seatOperations.addSeat(seatObj);
