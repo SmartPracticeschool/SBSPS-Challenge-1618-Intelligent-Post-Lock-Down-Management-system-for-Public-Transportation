@@ -17,6 +17,7 @@ import checkReview from '../components/CheckReview';
 import BusBooking from '../components/BookaBus';
 import { eRickBooking } from '../components/BookaErick';
 import ShowBuses from '../components/ShowBuses';
+import RedZone from '../components/RedZone';
 // import axios from 'axios';
 
 class Main extends React.Component {
@@ -187,7 +188,7 @@ class Main extends React.Component {
                     <Route path='/userRegister' render={() => <UserRegister takeInput={this.takeInput.bind(this)} userRegister={this.userRegister.bind(this)} />} />
                     <Route path='/busRegister' render={() => <BusRegister takeInput={this.takeInput.bind(this)} busRegister={this.busRegister.bind(this)} handleSelectedDays={this.handleSelectedDays.bind(this)} />} />
                     <Route path='/rickRegister' render={() => <RickRegister takeInput={this.takeInput.bind(this)} rickRegister={this.rickRegister.bind(this)} />} />
-                    <Route path='/userDashboard' component={UserDashboard} />
+                    <Route path='/userDashboard' component={RedZone} />
                     <Route path='/busDashboard' component={BusDriverDashboard} />
                     <Route path='/eRickDashboard' component={ERickDashboard} />
                     <Route path='/smartVisit' component={smartVisit} />

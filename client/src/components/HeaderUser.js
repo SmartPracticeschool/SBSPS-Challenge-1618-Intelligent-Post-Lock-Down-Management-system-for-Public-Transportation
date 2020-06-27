@@ -14,7 +14,7 @@ export const HeaderUser=()=>{
       <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
         <Menu.Item key="1"><Link to="/userDashboard">User DashBoard</Link></Menu.Item>
         <Menu.Item key="2"><Link to="/busBooking">Bus Booking</Link></Menu.Item>
-        <Menu.Item key="2"><Link to="/eRickBooking">Erick Booking</Link></Menu.Item>
+        <Menu.Item key="3"><Link to="/eRickBooking">Erick Booking</Link></Menu.Item>
         <SubMenu  title="Reviews">
           <Menu.ItemGroup >
             <Menu.Item key="setting:1"><Link to="/checkReviews">Check Reviews</Link></Menu.Item>
