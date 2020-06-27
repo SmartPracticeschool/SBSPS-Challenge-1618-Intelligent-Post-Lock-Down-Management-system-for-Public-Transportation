@@ -1,6 +1,6 @@
 const express = require('express');
 const busCollection = require('../db/model/bus');
-
+c
 const route = express.Router();
 
 //Register and login for Bus driver routes

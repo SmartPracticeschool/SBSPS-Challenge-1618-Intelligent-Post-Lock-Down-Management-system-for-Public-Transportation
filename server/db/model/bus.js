@@ -55,10 +55,10 @@ var busDetails = new Schema({
     },
     'scheduled_days': [], //M,W,F types
     'schedule_time': [], //{start,end}
-    'avg_duration': {
-        type: String
-    },
     'CoordinatesBusStop': [{
+        'address' : {
+            type : String
+        },
         'lat': {
             type: String,
             default: null
