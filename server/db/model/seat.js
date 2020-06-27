@@ -4,6 +4,9 @@ const Schema = mongoose.Schema;
 
 
 var seat = new Schema({
+    'seatNumber':{
+        type:String
+    },
     'isoccupied': {
         type: Boolean,
         default: false

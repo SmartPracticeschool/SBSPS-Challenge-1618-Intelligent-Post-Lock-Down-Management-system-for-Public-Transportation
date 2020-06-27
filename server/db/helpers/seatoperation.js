@@ -24,6 +24,7 @@ const seatOperations={
                 console.log("Error while finding");
             }
             else{
+                console.log("Inside find empty seat");
                 bookinObj.seatId=doc[0]._id;
                 bookinObj.price=doc[0].price;
                 console.log(bookinObj);

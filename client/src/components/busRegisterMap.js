@@ -46,6 +46,8 @@ class RouteMap extends React.Component {
             inputLatLng: [...this.state.inputLatLng, latLng]
         })
         console.log(this.state);
+        this.props.handleRouteObject(this.state);
+       
     }
 
     render() {

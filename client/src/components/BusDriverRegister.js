@@ -244,7 +244,7 @@ export default function BusRegister(props) {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  id="starttime"
+                  id="startTime"
                   variant="outlined"
                   required
                   fullWidth
@@ -252,7 +252,7 @@ export default function BusRegister(props) {
                   name="startTime"
                   type="time"
                   defaultValue="07:00"
-                  onFocus={props.takeInput}
+                  onChange={props.takeInput}
                   className={classes.textField}
                   InputLabelProps={{
                     shrink: true,
@@ -261,7 +261,7 @@ export default function BusRegister(props) {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  id="endtime"
+                  id="endTime"
                   variant="outlined"
                   required
                   fullWidth
@@ -269,7 +269,7 @@ export default function BusRegister(props) {
                   name="endTime"
                   type="time"
                   defaultValue="19:00"
-                  onFocus={props.takeInput}
+                  onChange={props.takeInput}
                   className={classes.textField}
                   InputLabelProps={{
                     shrink: true,
@@ -325,7 +325,7 @@ export default function BusRegister(props) {
                     </Toolbar>
                   </AppBar>
 
-                  <RouteMap />
+                  <RouteMap handleRouteObject = {props.handleRouteObject}/>
                 </Dialog>
               </Grid>
             </Grid>

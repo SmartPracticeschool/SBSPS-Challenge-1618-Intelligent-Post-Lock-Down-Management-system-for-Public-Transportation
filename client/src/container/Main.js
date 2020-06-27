@@ -25,6 +25,7 @@ class Main extends React.Component {
         super(props);
         this.obj = {};
         this.inputs = {};
+        this.routeObject = {};
         this.availableBuses = [];
         this.seatBookingObj = { VehicleID: "", UserID: "", price: "" }
 
@@ -41,6 +42,9 @@ class Main extends React.Component {
     }
     handleSelectedDays(selectedDays) {
         this.inputs['scheduled_days'] = selectedDays;
+    }
+    handleRouteObject(routeObject){
+        this.routeObject = routeObject;
     }
     login() {
         console.log('Login Call');
@@ -88,13 +92,25 @@ class Main extends React.Component {
             .catch(err => console.log('Json Error is ', err)))
             .catch(e => console.log('Server Error is ', e));
     }
+    handleCoordinateBusStop(){
+        let coordinateBusStop = [];
+        let rObj = this.routeObject
+        for(let i = 0 ; i < rObj.inputAddress.length ; i++){
+            let currObj = {"address" : rObj.inputAddress[i] , "lat" : rObj.inputLatLng[i].lat , "long" : rObj.inputLatLng[i].lng};
+            coordinateBusStop.push(currObj);
+        }
+        return coordinateBusStop;
+    }
     busRegister() {
         console.log('Bus Driver Register Call');
-        var userObject = { "ownerName": this.inputs['ownerName'], "driverName": this.inputs['driverName'], "email": this.inputs['email'], "password": this.inputs['password'], "vehicleRegistrationNumber": this.inputs['vehicleRegistrationNumber'], "creationDate": new Date(), "phoneNumber": this.inputs['phoneno'], "totalSeats": this.inputs['totalSeats'], "scheduled_days": this.inputs['scheduled_days'], "schedule_time": [this.inputs['startTime'], this.inputs['endTime']] };
+        let coordinateBusStop = this.handleCoordinateBusStop();
+        this.inputs['startTime'] = this.inputs['startTime'] == null ? "7:00" : this.inputs['startTime'];
+        this.inputs['endTime'] = this.inputs['endTime'] == null ? "19:00" : this.inputs['endTime'];
+        var busObject = { "ownerName": this.inputs['ownerName'], "driverName": this.inputs['driverName'], "email": this.inputs['email'], "password": this.inputs['password'], "vehicleRegistrationNumber": this.inputs['vehicleRegistrationNumber'], "creationDate": new Date(), "phoneNumber": this.inputs['phoneno'], "totalSeats": this.inputs['totalSeats'], "scheduled_days": this.inputs['scheduled_days'], "schedule_time": [this.inputs['startTime'] , this.inputs['endTime']] , "CoordinatesBusStop" : coordinateBusStop};
         fetch(Config.BASEURL + Config.BUSREGISTER, {
             method: 'POST', headers: {
                 'Content-Type': 'application/json'
-            }, body: JSON.stringify(userObject)
+            }, body: JSON.stringify(busObject)
         }).then(response => response.json()
             .then(data => {
                 console.log('Data is ', data);
@@ -104,11 +120,11 @@ class Main extends React.Component {
             .catch(e => console.log('Server Error is ', e));
     }
     rickRegister() {
-        var userObject = { "ownerName": this.inputs['ownerName'], "driverName": this.inputs['driverName'], "email": this.inputs['email'], "password": this.inputs['password'], "vehicleRegistrationNumber": this.inputs['vehicleRegistrationNumber'], "creationDate": new Date(), "phoneNumber": this.inputs['phoneno'], "totalSeats": this.inputs['totalSeats'] };
+        var erickObject = { "ownerName": this.inputs['ownerName'], "driverName": this.inputs['driverName'], "email": this.inputs['email'], "password": this.inputs['password'], "vehicleRegistrationNumber": this.inputs['vehicleRegistrationNumber'], "creationDate": new Date(), "phoneNumber": this.inputs['phoneno'], "totalSeats": this.inputs['totalSeats'] };
         fetch(Config.BASEURL + Config.RICKREGISTER, {
             method: 'POST', headers: {
                 'Content-Type': 'application/json'
-            }, body: JSON.stringify(userObject)
+            }, body: JSON.stringify(erickObject)
         }).then(response => response.json()
             .then(data => {
                 console.log('Data is ', data);
@@ -186,7 +202,7 @@ class Main extends React.Component {
                 <Switch>
                     <Route exact path='/' render={() => <SignIn login={this.login.bind(this)} takeInput={this.takeInput.bind(this)} />} />
                     <Route path='/userRegister' render={() => <UserRegister takeInput={this.takeInput.bind(this)} userRegister={this.userRegister.bind(this)} />} />
-                    <Route path='/busRegister' render={() => <BusRegister takeInput={this.takeInput.bind(this)} busRegister={this.busRegister.bind(this)} handleSelectedDays={this.handleSelectedDays.bind(this)} />} />
+                    <Route path='/busRegister' render={() => <BusRegister takeInput={this.takeInput.bind(this)} busRegister={this.busRegister.bind(this)} handleSelectedDays={this.handleSelectedDays.bind(this)} handleRouteObject = {this.handleRouteObject.bind(this)}/>} />
                     <Route path='/rickRegister' render={() => <RickRegister takeInput={this.takeInput.bind(this)} rickRegister={this.rickRegister.bind(this)} />} />
                     <Route path='/userDashboard' component={RedZone} />
                     <Route path='/busDashboard' component={BusDriverDashboard} />
