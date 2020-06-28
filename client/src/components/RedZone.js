@@ -1,15 +1,15 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import styles from './appStyles.module.css';
 import { HeaderUser } from './HeaderUser';
 import axios from 'axios';
 
-class RedZone extends Component{
-    constructor(props){
+class RedZone extends Component {
+    constructor(props) {
         super(props);
 
         this.state = {
-            containmentsAvailability:true,
-            districtZoneType:'Red Zone'
+            containmentsAvailability: true,
+            districtZoneType: 'Red Zone'
         }
     }
 
@@ -32,39 +32,39 @@ class RedZone extends Component{
     //     }).then(res=>console.log(res.data));
     // }
 
-    render(){
+    render() {
         let message
-        if(this.state.containmentsAvailability){
+        if (this.state.containmentsAvailability) {
 
-            if(this.state.districtZoneType==='Red Zone'){
+            if (this.state.districtZoneType === 'Red Zone') {
                 message = (
                     <>
-                    <div>
-                        <h1 className={styles.error}>You Are Present In Red Zone</h1>
-                    </div>
-                    <div>Info. About Red Zone</div>
+                        <div>
+                            <h1 className={styles.error}>You Are Present In Red Zone</h1>
+                        </div>
+                        <div>Info. About Red Zone</div>
                     </>
                 )
-            }else if(this.state.districtZoneType==='Orange Zone'){
+            } else if (this.state.districtZoneType === 'Orange Zone') {
                 message = (
                     <>
-                    <div>
-                        <h1 className={styles.bad}>You Are Present In Orange Zone</h1>
-                    </div>
-                    <div>Info. about Orange Zone</div>
+                        <div>
+                            <h1 className={styles.bad}>You Are Present In Orange Zone</h1>
+                        </div>
+                        <div>Info. about Orange Zone</div>
                     </>
                 )
-            }else{
+            } else {
                 message = (
                     <>
-                    <div>
-                        <h1 className={styles.success}>You Are Present In Green Zone</h1>
-                    </div>
-                    <div>Info. about Green Zone</div>
+                        <div>
+                            <h1 className={styles.success}>You Are Present In Green Zone</h1>
+                        </div>
+                        <div>Info. about Green Zone</div>
                     </>
                 )
             }
-        }else{
+        } else {
             message = (
                 <div>
                     <h1>Data not available for your area</h1>
@@ -72,12 +72,10 @@ class RedZone extends Component{
             )
         }
 
-        return(
+        return (
             <>
-            <div>
-                <HeaderUser/>
-            </div>
-            <div>{message}</div>
+
+                <div>{message}</div>
             </>
         )
 

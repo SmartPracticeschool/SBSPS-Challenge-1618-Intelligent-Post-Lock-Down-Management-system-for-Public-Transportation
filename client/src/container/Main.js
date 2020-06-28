@@ -15,9 +15,11 @@ import giveReview from '../components/GiveReview';
 
 import checkReview from '../components/CheckReview';
 import BusBooking from '../components/BookaBus';
-import { eRickBooking } from '../components/BookaErick';
+import eRickBooking from '../components/BookaErick';
 import ShowBuses from '../components/ShowBuses';
 import RedZone from '../components/RedZone';
+import ERickBooking from '../components/BookaErick';
+import ShowEricks from '../components/ShowEricks';
 // import axios from 'axios';
 
 class Main extends React.Component {
@@ -43,7 +45,7 @@ class Main extends React.Component {
     handleSelectedDays(selectedDays) {
         this.inputs['scheduled_days'] = selectedDays;
     }
-    handleRouteObject(routeObject){
+    handleRouteObject(routeObject) {
         this.routeObject = routeObject;
     }
     login() {
@@ -92,11 +94,11 @@ class Main extends React.Component {
             .catch(err => console.log('Json Error is ', err)))
             .catch(e => console.log('Server Error is ', e));
     }
-    handleCoordinateBusStop(){
+    handleCoordinateBusStop() {
         let coordinateBusStop = [];
         let rObj = this.routeObject
-        for(let i = 0 ; i < rObj.inputAddress.length ; i++){
-            let currObj = {"address" : rObj.inputAddress[i] , "lat" : rObj.inputLatLng[i].lat , "long" : rObj.inputLatLng[i].lng};
+        for (let i = 0; i < rObj.inputAddress.length; i++) {
+            let currObj = { "address": rObj.inputAddress[i], "lat": rObj.inputLatLng[i].lat, "long": rObj.inputLatLng[i].lng };
             coordinateBusStop.push(currObj);
         }
         return coordinateBusStop;
@@ -106,7 +108,7 @@ class Main extends React.Component {
         let coordinateBusStop = this.handleCoordinateBusStop();
         this.inputs['startTime'] = this.inputs['startTime'] == null ? "7:00" : this.inputs['startTime'];
         this.inputs['endTime'] = this.inputs['endTime'] == null ? "19:00" : this.inputs['endTime'];
-        var busObject = { "ownerName": this.inputs['ownerName'], "driverName": this.inputs['driverName'], "email": this.inputs['email'], "password": this.inputs['password'], "vehicleRegistrationNumber": this.inputs['vehicleRegistrationNumber'], "creationDate": new Date(), "phoneNumber": this.inputs['phoneno'], "totalSeats": this.inputs['totalSeats'], "scheduled_days": this.inputs['scheduled_days'], "schedule_time": [this.inputs['startTime'] , this.inputs['endTime']] , "CoordinatesBusStop" : coordinateBusStop};
+        var busObject = { "ownerName": this.inputs['ownerName'], "driverName": this.inputs['driverName'], "email": this.inputs['email'], "password": this.inputs['password'], "vehicleRegistrationNumber": this.inputs['vehicleRegistrationNumber'], "creationDate": new Date(), "phoneNumber": this.inputs['phoneno'], "totalSeats": this.inputs['totalSeats'], "scheduled_days": this.inputs['scheduled_days'], "schedule_time": [this.inputs['startTime'], this.inputs['endTime']], "CoordinatesBusStop": coordinateBusStop };
         fetch(Config.BASEURL + Config.BUSREGISTER, {
             method: 'POST', headers: {
                 'Content-Type': 'application/json'
@@ -202,17 +204,18 @@ class Main extends React.Component {
                 <Switch>
                     <Route exact path='/' render={() => <SignIn login={this.login.bind(this)} takeInput={this.takeInput.bind(this)} />} />
                     <Route path='/userRegister' render={() => <UserRegister takeInput={this.takeInput.bind(this)} userRegister={this.userRegister.bind(this)} />} />
-                    <Route path='/busRegister' render={() => <BusRegister takeInput={this.takeInput.bind(this)} busRegister={this.busRegister.bind(this)} handleSelectedDays={this.handleSelectedDays.bind(this)} handleRouteObject = {this.handleRouteObject.bind(this)}/>} />
+                    <Route path='/busRegister' render={() => <BusRegister takeInput={this.takeInput.bind(this)} busRegister={this.busRegister.bind(this)} handleSelectedDays={this.handleSelectedDays.bind(this)} handleRouteObject={this.handleRouteObject.bind(this)} />} />
                     <Route path='/rickRegister' render={() => <RickRegister takeInput={this.takeInput.bind(this)} rickRegister={this.rickRegister.bind(this)} />} />
-                    <Route path='/userDashboard' component={RedZone} />
+                    <Route path='/userDashboard' component={UserDashboard} />
                     <Route path='/busDashboard' component={BusDriverDashboard} />
                     <Route path='/eRickDashboard' component={ERickDashboard} />
                     <Route path='/smartVisit' component={smartVisit} />
                     <Route path='/giveReview' component={giveReview} />
                     <Route path='/checkReviews' component={checkReview} />
                     <Route path='/busBooking' render={() => <BusBooking takeInput={this.takeInput.bind(this)} findBuses={this.findBuses.bind(this)} />} />
-                    <Route path='/eRickBooking' component={eRickBooking} />
+                    <Route path='/eRickBooking' component={ERickBooking} />
                     <Route path="/showbuses" render={() => <ShowBuses availableBuses={this.availableBuses} seatBookingObj={this.seatBookingObj} bookASeat={this.bookASeat.bind(this)} />}></Route>
+                    <Route path='/showericks' component={ShowEricks} />
                 </Switch>
             </div>
         )
