@@ -212,7 +212,8 @@ class Main extends React.Component {
                     <Route path='/smartVisit' component={smartVisit} />
                     <Route path='/giveReview' component={giveReview} />
                     <Route path='/checkReviews' component={checkReview} />
-                    <Route path='/busBooking' render={() => <BusBooking takeInput={this.takeInput.bind(this)} findBuses={this.findBuses.bind(this)} />} />
+                    <Route path='/busBooking' component={BusBooking}/>
+                    {/* <Route path='/busBooking' render={() => <BusBooking takeInput={this.takeInput.bind(this)} findBuses={this.findBuses.bind(this)} />} /> */}
                     <Route path='/eRickBooking' component={ERickBooking} />
                     <Route path="/showbuses" render={() => <ShowBuses availableBuses={this.availableBuses} seatBookingObj={this.seatBookingObj} bookASeat={this.bookASeat.bind(this)} />}></Route>
                     <Route path='/showericks' component={ShowEricks} />
