@@ -13,25 +13,22 @@ class RedZone extends Component {
         }
     }
 
-    // getToken(){
-    //     axios.post({
-    //         url:'https://data.geoiq.io/dataapis/v1.0/covid/locationcheck',
-    //         data:{
-    //             "key":"Your Api Key",
-    //             "latlngs":[[
-    //                 28.6296,
-    //                 77.0802
-    //             ]]
-    //         },
-    //         beforeSend: function(xhr) {
-    //             xhr.setRequestHeader("accept", "application/json")
-    //             xhr.setRequestHeader("Content-Type", "application/json")
-    //        }, success: function(data){
-    //            console.log(data)
-    //        }
-    //     }).then(res=>console.log(res.data));
-    // }
+    getToken() {
+        axios.post('https://data.geoiq.io/dataapis/v1.0/covid/locationcheck', {
+            "key": "your API key",
+            "latlngs": [[
+                28.711660,
+                77.114220
+            ]]
+        }).then(res => {
+            console.log(res.data);
+        }).catch(err => { console.log(err) });
+    }
 
+
+    componentDidMount() {
+        this.getToken();
+    }
     render() {
         let message
         if (this.state.containmentsAvailability) {
