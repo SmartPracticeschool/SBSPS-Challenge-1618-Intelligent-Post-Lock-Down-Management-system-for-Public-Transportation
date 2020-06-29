@@ -10,6 +10,7 @@ import BusDashBoardHeader from './busDashboardComponents/BusDashboardHeader';
 import BusDetails from './busDashboardComponents/BusDetails';
 import StopDetails from './busDashboardComponents/BusStopDetails';
 import BookingDetails from './busDashboardComponents/BookingDetails';
+import Loader from './Loader';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,6 +42,8 @@ export default function BusDriverDashboard() {
   const fixedHeightPaper = clsx(classes.paper);
 
   return (
+    <div>
+    (props.loading) : ? <Loader/> :   
     <div className={classes.root}>
       <CssBaseline />
       <AppBar position="absolute" className={clsx(classes.appBar)}>
@@ -68,6 +71,7 @@ export default function BusDriverDashboard() {
           </Grid>
         </Container>
       </main>
+    </div>
     </div>
   );
 }

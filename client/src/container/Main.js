@@ -20,6 +20,7 @@ import ShowBuses from '../components/ShowBuses';
 import RedZone from '../components/RedZone';
 import ERickBooking from '../components/BookaErick';
 import ShowEricks from '../components/ShowEricks';
+import Loader2 from '../components/Loader2';
 // import axios from 'axios';
 
 class Main extends React.Component {
@@ -30,6 +31,7 @@ class Main extends React.Component {
         this.routeObject = {};
         this.availableBuses = [];
         this.seatBookingObj = { VehicleID: "", UserID: "", price: "" }
+        this.state = { "loading": false };
 
         // this.state = {
         //     'lat': '28.7041',
@@ -49,6 +51,7 @@ class Main extends React.Component {
         this.routeObject = routeObject;
     }
     login() {
+        this.setState({ "loading": true });
         console.log('Login Call');
         var userObject = { "email": this.inputs['email'], "password": this.inputs['password'] };
         fetch(Config.BASEURL + Config.LOGIN, {
@@ -67,9 +70,11 @@ class Main extends React.Component {
                     localStorage.role = role;
                     this.setState({ "clientID": clientID, "role": role });
                     let redirectUrl = (role === "user") ? "userDashboard" : (role === "busdriver") ? "busDashboard" : "eRickDashboard";
+                    this.setState({ "loading": false });
                     this.props.history.push(redirectUrl);
                 }
                 else {
+                    this.setState({ "loading": false });
                     alert("Invalid UserId or password");
                 }
             })
@@ -137,13 +142,17 @@ class Main extends React.Component {
     }
 
     findBuses() {
+        this.setState({ "loading": true });
         var objStartEnd = { "startLocation": this.inputs['startLocation'], "endLocation": this.inputs['endLocation'] };
         console.log(this.inputs);
         console.log(objStartEnd);
         this.availableBuses = [{ seat: "1", vehicle: "1221", price: "10" }, { seat: "1", vehicle: "1221", price: "10" }, { seat: "1", vehicle: "1221", price: "10" }, { seat: "1", vehicle: "1221", price: "10" }];
         //availableBusesDisplay(availableBuses);
         // axios.post(Config.BASEURL + Config.FINDBUSES,objStartEnd)
-        // .then(data=>console.log("Data recevied"))
+        // .then(data=>{
+        // console.log("Data recevied"))
+        //this.setState({"loading":false})
+        // }
         // .catch(err=>console.log("Error occured",err))
     }
 
@@ -195,6 +204,10 @@ class Main extends React.Component {
 
 
     render() {
+        if (this.state.loading) {
+            // return <Loader/>
+            return <Loader2 />
+        }
         return (
             <div>
                 {/* <div>
@@ -206,9 +219,9 @@ class Main extends React.Component {
                     <Route path='/userRegister' render={() => <UserRegister takeInput={this.takeInput.bind(this)} userRegister={this.userRegister.bind(this)} />} />
                     <Route path='/busRegister' render={() => <BusRegister takeInput={this.takeInput.bind(this)} busRegister={this.busRegister.bind(this)} handleSelectedDays={this.handleSelectedDays.bind(this)} handleRouteObject={this.handleRouteObject.bind(this)} />} />
                     <Route path='/rickRegister' render={() => <RickRegister takeInput={this.takeInput.bind(this)} rickRegister={this.rickRegister.bind(this)} />} />
-                    <Route path='/userDashboard' component={UserDashboard} />
-                    <Route path='/busDashboard' component={BusDriverDashboard} />
-                    <Route path='/eRickDashboard' component={ERickDashboard} />
+                    <Route path='/userDashboard' render={() => <UserDashboard loading={this.state.loading} />} />
+                    <Route path='/busDashboard' render={() => <BusDriverDashboard loading={this.state.loading} />} />
+                    <Route path='/eRickDashboard' render={() => <ERickDashboard loading={this.state.loading} />} />
                     <Route path='/smartVisit' component={smartVisit} />
                     <Route path='/giveReview' component={giveReview} />
                     <Route path='/checkReviews' component={checkReview} />
