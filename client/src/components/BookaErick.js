@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -42,6 +42,9 @@ const useStyles = makeStyles({
 export default function ERickBooking(props) {
     const classes = useStyles();
     // const bull = <span className={classes.bullet}>•</span>;
+    const [PickUp, updatePickup] = useState({ "a": "h" });
+    const [Drop, updateDrop] = useState({ "b": "c" });
+
 
     return (
         <>
@@ -58,19 +61,32 @@ export default function ERickBooking(props) {
     </Typography>
                             <Grid container spacing={4} >
                                 <Grid item sm>
-                                    <SearchLocationInput placeholder="PickUpLocation" onChangeP={(latLng, address) => { console.log(latLng, address) }}>
+                                    <SearchLocationInput placeholder="PickUpLocation" onChangeP={(latLng, address) => {
+                                        console.log(latLng, address);
+                                        updatePickup({ latLng, "address": address });
+                                    }}>
                                         <TextField id="startLocation" label="PickUp" onChange={props.takeInput} />
                                     </SearchLocationInput>
                                 </Grid>
                                 <Grid item sm>
-                                    <SearchLocationInput placeholder="endLocation" onChangeP={(latLng, address) => { console.log(latLng, address) }} >
+                                    <SearchLocationInput placeholder="endLocation" onChangeP={(latLng, address) => {
+                                        console.log(latLng, address)
+                                        updateDrop({ latLng, "address": address });
+                                    }} >
                                         <TextField id="endLocation" label="Drop" onChange={props.takeInput} />
                                     </SearchLocationInput>
                                 </Grid>
                             </Grid>
                         </CardContent>
                         <CardActions>
-                            <Button size="small" onClick={() => { console.log('find available ericks query called') }}>
+                            <Button size="small" onClick={() => {
+                                console.log('find available ericks query called');
+                                console.log(PickUp, Drop);
+
+                                //these pickup and drop will be params for api call
+
+                            }}>
+
                                 <p><Link to="/showericks">Find available Ericks</Link></p>
                             </Button>
                         </CardActions>
