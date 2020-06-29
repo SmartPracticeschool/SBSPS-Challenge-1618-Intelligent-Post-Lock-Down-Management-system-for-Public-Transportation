@@ -21,7 +21,8 @@ import RedZone from '../components/RedZone';
 import ERickBooking from '../components/BookaErick';
 import ShowEricks from '../components/ShowEricks';
 import Loader2 from '../components/Loader2';
-// import axios from 'axios';
+import {TicketDisplay} from '../components/TicketDisplay';
+import axios from 'axios';
 
 class Main extends React.Component {
     constructor(props) {
@@ -150,9 +151,9 @@ class Main extends React.Component {
         //availableBusesDisplay(availableBuses);
         // axios.post(Config.BASEURL + Config.FINDBUSES,objStartEnd)
         // .then(data=>{
-        // console.log("Data recevied"))
-        //this.setState({"loading":false})
-        // }
+        // console.log("Data recevied",data);
+        // //this.setState({"loading":false})
+        // })
         // .catch(err=>console.log("Error occured",err))
     }
 
@@ -225,11 +226,12 @@ class Main extends React.Component {
                     <Route path='/smartVisit' component={smartVisit} />
                     <Route path='/giveReview' component={giveReview} />
                     <Route path='/checkReviews' component={checkReview} />
-                    <Route path='/busBooking' component={BusBooking} />
-                    {/* <Route path='/busBooking' render={() => <BusBooking takeInput={this.takeInput.bind(this)} findBuses={this.findBuses.bind(this)} />} /> */}
+                    {/* <Route path='/busBooking' component={BusBooking} /> */}
+                    <Route path='/busBooking' render={() => <BusBooking takeInput={this.takeInput.bind(this)} findBuses={this.findBuses.bind(this)} />} />
                     <Route path='/eRickBooking' component={ERickBooking} />
                     <Route path="/showbuses" render={() => <ShowBuses availableBuses={this.availableBuses} seatBookingObj={this.seatBookingObj} bookASeat={this.bookASeat.bind(this)} />}></Route>
                     <Route path='/showericks' component={ShowEricks} />
+                    <Route path='/ticketdisplay' component={TicketDisplay} />
                 </Switch>
             </div>
         )
