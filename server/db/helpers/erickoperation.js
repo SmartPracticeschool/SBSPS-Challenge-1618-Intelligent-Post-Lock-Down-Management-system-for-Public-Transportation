@@ -31,7 +31,7 @@ const erickOperation = {
                 }
                 else {
                     console.log("Invalid userid or password in erick collection");
-                    res.json({"msg":"Invalid userid or password"});
+                    res.json({"isLogged" : false,"msg":"Invalid userid or password"});
                 }
             }
             else {

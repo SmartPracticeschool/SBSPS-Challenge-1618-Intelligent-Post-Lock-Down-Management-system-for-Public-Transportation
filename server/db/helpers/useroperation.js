@@ -30,7 +30,7 @@ const userOperations={
                 }
                 else{
                     console.log("Invalid userid or password in user schema");
-                    res.json({"msg":"Invalid userid or password"});   
+                    res.json({"isLogged" : false,"msg":"Invalid userid or password"});   
                 }
             }
             else{

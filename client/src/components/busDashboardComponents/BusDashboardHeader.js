@@ -17,16 +17,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function BusDashBoardHeader(props) {
+export default function BusDashBoardHeader() {
   const classes = useStyles();
-
+  const userDetails = JSON.parse(localStorage.getItem('userDetails'));
   return (
     <div className={classes.root}>
       <AppBar position="relative">
                 <Toolbar>
                     <DirectionsBusIcon className={classes.icon} />
                     <Typography variant="h6" color="inherit" noWrap>
-                        Driver Name
+                        Welcome {userDetails.driverName}
           </Typography>
                 </Toolbar>
             </AppBar>

@@ -46,12 +46,18 @@ const busOperation = {
                         let passThroughStart = false;
                         let passThroughEnd = false;
                         for (let j = 0; j < coordinates.length; j++) {
-                            if (userObject.startLocation[0].lat == coordinates[j].lat && userObject.startLocation[1].long == coordinates[j].long) {
+                            if (userObject.startLocation == coordinates[j].address ) {
                                 passThroughStart = true;
                             }
-                            if (userObject.endLocation[0].lat == coordinates[j].lat && userObject.endLocation[1].long == coordinates[j].long) {
+                            if (userObject.endLocation == coordinates[j].address) {
                                 passThroughEnd = true;
                             }
+                            // if (userObject.startLocation[0].lat == coordinates[j].lat && userObject.startLocation[1].long == coordinates[j].long) {
+                            //     passThroughStart = true;
+                            // }
+                            // if (userObject.endLocation[0].lat == coordinates[j].lat && userObject.endLocation[1].long == coordinates[j].long) {
+                            //     passThroughEnd = true;
+                            // }
                         }
                         if (passThroughStart && passThroughEnd) {
                             availableBuses.push(currBus);
@@ -77,7 +83,7 @@ const busOperation = {
                 }
                 else{
                     console.log("Invalid user name or password in bus schema");
-                    res.json({"msg":"Invalid userid or password"});
+                    res.json({"isLogged" : false,"msg":"Invalid userid or password"});
                 }
             }
             else{
