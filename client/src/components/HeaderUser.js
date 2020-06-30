@@ -5,16 +5,19 @@ import './HeaderUSer.css';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 const { Header} = Layout;
 const { SubMenu } = Menu;
-
 export const HeaderUser=()=>{
     return (
         <Layout className="layout">
     <Header>
       {/* <div className="logo" /> */}
-      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
-        <Menu.Item key="1"><Link to="/userDashboard">User DashBoard</Link></Menu.Item>
-        <Menu.Item key="2"><Link to="/busBooking">Bus Booking</Link></Menu.Item>
-        <Menu.Item key="3"><Link to="/eRickBooking">Erick Booking</Link></Menu.Item>
+      {/* {
+            href=window.location.href.split('/');
+            href=href[3];
+      } */}
+      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['/userDashboard']} >
+        <Menu.Item key="/userDashboard" ><Link to="/userDashboard">User DashBoard</Link></Menu.Item>
+        <Menu.Item key="/busBooking" ><Link to="/busBooking">Bus Booking</Link></Menu.Item>
+        <Menu.Item key="/eRickBooking" ><Link to="/eRickBooking">Erick Booking</Link></Menu.Item>
         <SubMenu  title="Reviews">
           <Menu.ItemGroup >
             <Menu.Item key="setting:1"><Link to="/checkReviews">Check Reviews</Link></Menu.Item>
