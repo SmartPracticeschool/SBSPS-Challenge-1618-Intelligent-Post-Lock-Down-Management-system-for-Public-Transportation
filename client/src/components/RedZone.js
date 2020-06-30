@@ -11,9 +11,9 @@ import EmojiObjectsRoundedIcon from '@material-ui/icons/EmojiObjectsRounded'; //
 import InfoRoundedIcon from '@material-ui/icons/InfoRounded';  //about Icon
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded'; //Cross Icon  (Donts)
 import CheckRoundedIcon from '@material-ui/icons/CheckRounded'; //Tick Icon   (Dos)
-import ErrorRoundedIcon from '@material-ui/icons/ErrorRounded'; //Error Icon
+// import ErrorRoundedIcon from '@material-ui/icons/ErrorRounded'; //Error Icon
 
-import { HeaderUser } from './HeaderUser';
+// import { HeaderUser } from './HeaderUser';
 import axios from 'axios';
 import { Container } from '@material-ui/core';
 

@@ -83,7 +83,7 @@ const busOperation = {
                 }
                 else{
                     console.log("Invalid user name or password in bus schema");
-                    res.json({"msg":"Invalid userid or password"});
+                    res.json({"isLogged" : false,"msg":"Invalid userid or password"});
                 }
             }
             else{

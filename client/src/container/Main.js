@@ -15,14 +15,14 @@ import giveReview from '../components/GiveReview';
 
 import checkReview from '../components/CheckReview';
 import BusBooking from '../components/BookaBus';
-import eRickBooking from '../components/BookaErick';
+// import eRickBooking from '../components/BookaErick';
 import ShowBuses from '../components/ShowBuses';
-import RedZone from '../components/RedZone';
+// import RedZone from '../components/RedZone';
 import ERickBooking from '../components/BookaErick';
 import ShowEricks from '../components/ShowEricks';
 // import Loader2 from '../components/Loader2';
 import {TicketDisplay} from '../components/TicketDisplay';
-import axios from 'axios';
+// import axios from 'axios';
 
 class Main extends React.Component {
     constructor(props) {
@@ -32,7 +32,7 @@ class Main extends React.Component {
         this.routeObject = {};
         this.availableBuses = [];
         this.seatBookingObj = { VehicleID: "", UserID: "", price: "" }
-        this.state = { "loading": false };
+        this.state = { clientID : '' , role : ''};
 
         // this.state = {
         //     'lat': '28.7041',
@@ -66,10 +66,11 @@ class Main extends React.Component {
                 if (data.isLoggedIn) {
                     let loginObj = data.loginObj;
                     let role = loginObj.role;
-                    let clientID = (role === "user") ? loginObj.name : loginObj.driverName;
-                    localStorage.clientID = clientID;
-                    localStorage.role = role;
-                    this.setState({ "clientID": clientID, "role": role });
+                    let clientID = loginObj._id;
+                    localStorage.setItem('userDetails', JSON.stringify(data.loginObj))
+                    // localStorage.clientID = clientID;
+                    // localStorage.role = role;
+                    // this.setState({"clientID": clientID, "role": role });
                     let redirectUrl = (role === "user") ? "userDashboard" : (role === "busdriver") ? "busDashboard" : "eRickDashboard";
                     // this.setState({ "loading": false });
                     this.props.history.push(redirectUrl);
@@ -128,6 +129,7 @@ class Main extends React.Component {
             .catch(e => console.log('Server Error is ', e));
     }
     rickRegister() {
+        console.log("E-Rick Register Call");
         var erickObject = { "ownerName": this.inputs['ownerName'], "driverName": this.inputs['driverName'], "email": this.inputs['email'], "password": this.inputs['password'], "vehicleRegistrationNumber": this.inputs['vehicleRegistrationNumber'], "creationDate": new Date(), "phoneNumber": this.inputs['phoneno'], "totalSeats": this.inputs['totalSeats'] };
         fetch(Config.BASEURL + Config.RICKREGISTER, {
             method: 'POST', headers: {
@@ -220,9 +222,9 @@ class Main extends React.Component {
                     <Route path='/userRegister' render={() => <UserRegister takeInput={this.takeInput.bind(this)} userRegister={this.userRegister.bind(this)} />} />
                     <Route path='/busRegister' render={() => <BusRegister takeInput={this.takeInput.bind(this)} busRegister={this.busRegister.bind(this)} handleSelectedDays={this.handleSelectedDays.bind(this)} handleRouteObject={this.handleRouteObject.bind(this)} />} />
                     <Route path='/rickRegister' render={() => <RickRegister takeInput={this.takeInput.bind(this)} rickRegister={this.rickRegister.bind(this)} />} />
-                    <Route path='/userDashboard' render={() => <UserDashboard loading={this.state.loading} />} />
-                    <Route path='/busDashboard' render={() => <BusDriverDashboard loading={this.state.loading} />} />
-                    <Route path='/eRickDashboard' render={() => <ERickDashboard loading={this.state.loading} />} />
+                    <Route path='/userDashboard' render={() => <UserDashboard />} />
+                    <Route path='/busDashboard' render={() => <BusDriverDashboard/>} />
+                    <Route path='/eRickDashboard' render={() => <ERickDashboard />} />
                     <Route path='/smartVisit' component={smartVisit} />
                     <Route path='/giveReview' component={giveReview} />
                     <Route path='/checkReviews' component={checkReview} />

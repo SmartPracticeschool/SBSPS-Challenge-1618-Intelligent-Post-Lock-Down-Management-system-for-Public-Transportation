@@ -24,22 +24,22 @@ const useStyles = makeStyles((theme)=>({
 export default function BusDetails() {
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
-
+  const userDetails = JSON.parse(localStorage.getItem('userDetails'));
   return (
     <Card className={classes.root} variant="outlined">
       <CardContent>
         <Title>Bus Details</Title>
         <Typography component="p" variant="h6">
-          {bull} Registration Number:- DL-4S-F2025
+          {bull} Registration Number:- {userDetails.vehicleRegistrationNumber}
         </Typography>
         <Typography component="p" variant="h6">
-          {bull} Total Seats:- 30
+          {bull} Total Seats:- {userDetails.totalSeats}
         </Typography>
         <Typography component="p" variant="h6">
-          {bull} Total Seats Booked:- 
+          {bull} Total Seats Booked:- {userDetails.bookedSeats.length}
         </Typography>
         <Typography component="p" variant="h6">
-          {bull} Some more Info....
+          {bull} Phone No : {userDetails.phoneNumber}
         </Typography>
       </CardContent>
     </Card>

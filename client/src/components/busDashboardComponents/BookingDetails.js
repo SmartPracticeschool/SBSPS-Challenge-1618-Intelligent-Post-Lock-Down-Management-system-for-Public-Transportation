@@ -30,10 +30,10 @@ function createData(id, bookId, name, pickUp, drop, amount) {
 }
 
 const rows = [
-    createData(1, 111, 'Shivam Chauhan', 'Gtb nagar', 'Rohini Sector-18', 40),
-    createData(2, 112, 'Himank Gupta', 'Rithala', 'Rohini Sector-17', 20),
-    createData(3, 113, 'Shobhit Aggarwal', 'Janak Puri', 'Manali', 400),
-    createData(4, 114, 'Manik Singh', 'Prashant Vihar', 'GB Road', 50)
+    createData(1, 111, 'Shivam Chauhan', 'Gtb nagar', 'Azadpur', 20),
+    createData(2, 112, 'Himank Gupta', 'Vidhan Sabha', 'Model Town', 30),
+    createData(3, 113, 'Shobhit Aggarwal', 'Adarsh Nagar', 'Rohini Sec-19', 30),
+    createData(4, 114, 'Manik Singh', 'Jahangir Puri', 'Haiderpur Badli', 20)
 ];
 
 const useStyles = makeStyles((theme) => ({
