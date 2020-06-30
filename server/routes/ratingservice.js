@@ -6,7 +6,7 @@ const route = express.Router();
 route.post('/addreview',(req,res)=>{
     var reviewObj=req.body;
     const placeOperations=require("../db/helpers/placeoperation");
-    placeOperations.findPlace(reviewObj);
+    placeOperations.findPlace(reviewObj,res);
 })
 
 module.exports = route;
