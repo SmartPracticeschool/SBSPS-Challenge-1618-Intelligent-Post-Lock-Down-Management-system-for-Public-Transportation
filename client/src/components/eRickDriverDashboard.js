@@ -62,11 +62,12 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const cards = [1, 2, 3];
+const cards = [1, 2];
 
 export default function ERickDashboard() {
     const classes = useStyles();
     const [status, changeStatus] = useState('for Hire')
+    const userDetails = JSON.parse(localStorage.getItem('userDetails'));
 
     return (
         <React.Fragment>
@@ -75,8 +76,8 @@ export default function ERickDashboard() {
                 <Toolbar>
                     <DirectionsBusIcon className={classes.icon} />
                     <Typography variant="h6" color="inherit" noWrap>
-                        Driver Name
-          </Typography>
+                        Owner Name : {userDetails.ownerName}
+                    </Typography>
                 </Toolbar>
             </AppBar>
             <main>
@@ -88,9 +89,10 @@ export default function ERickDashboard() {
                         <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
                             {status}            </Typography>
                         <Typography variant="h5" align="center" color="textSecondary" paragraph>
-                            Driver Name<br />
-                           Erick Id<br />
-                           few details<br />
+                            Driver Name: {userDetails.driverName} <br />
+                           Erick Id  {userDetails.vehicleRegistrationNumber} <br />
+                           Contact number {userDetails.phoneNumber} <br />
+                           Current position at : {userDetails.liveLocation.address}
                         </Typography>
                         <div className={classes.heroButtons}>
                             <Grid container spacing={2} justify="center">
@@ -126,11 +128,11 @@ export default function ERickDashboard() {
 
                                     <CardContent className={classes.cardContent}>
                                         <Typography style={{ textAlign: "center" }} gutterBottom variant="h5" component="h2">
-                                            Origin: xyz<br />
-                                            Destination: cde
+                                            Origin: GTB Nagar,Metro Station Delhi<br />
+                                            Destination: Outrum Lane
                     </Typography>
                                         <Typography style={{ textAlign: "center" }}>
-                                            Some more user details
+                                            user details
                     </Typography>
                                     </CardContent>
                                     <CardActions style={{ textAlign: "center", display: "inline-block" }} >

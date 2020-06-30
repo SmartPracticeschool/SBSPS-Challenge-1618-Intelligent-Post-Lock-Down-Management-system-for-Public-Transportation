@@ -65,11 +65,12 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const cards = [1, 2, 3];
+
 
 export default function ShowEricks(props) {
     console.log("showing available ericks ", props);
     const [open, setOpen] = React.useState(false);
+    const cards = props.location.state.ericks;
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -96,7 +97,7 @@ export default function ShowEricks(props) {
                 <div className={classes.heroContent}>
                     <Container maxWidth="sm">
                         <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-                            Available Ercks drivers to contact
+                            Available Ericks drivers to contact
             </Typography>
                         <Typography variant="h5" align="center" color="textSecondary" paragraph>
                             Avialable Drivers for contact On your route select the one and have a safe journey
@@ -136,13 +137,13 @@ export default function ShowEricks(props) {
                       This is a media card. You can use this section to describe the content.
                     </Typography> */}
                                         <Typography className={classes.title} color="textSecondary" gutterBottom>
-                                            vehicle number :
+                                            vehicle number : {ele.vehicleRegistrationNumber}
                                         </Typography>
                                         <Typography className={classes.title} color="textSecondary" gutterBottom>
-                                            Driver No.:
+                                            Driver No.: {ele.phoneNumber}
                                         </Typography>
                                         <Typography className={classes.title} color="textSecondary" gutterBottom>
-                                            Driver Name:
+                                            Driver Name: {ele.driverName}
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
@@ -165,7 +166,7 @@ export default function ShowEricks(props) {
                                                 <Button onClick={handleClose} color="primary">
                                                     Disagree
                     </Button>
-                                                <Button onClick={() => { props.bookASeat() }} color="primary" autoFocus>
+                                                <Button onClick={handleClose} color="primary" autoFocus>
                                                     Agree
                     </Button>
                                             </DialogActions>

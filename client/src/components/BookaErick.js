@@ -12,6 +12,7 @@ import SearchLocationInput from './smartSearch';
 import { Link } from 'react-router-dom';
 import { HeaderUser } from './HeaderUser';
 import axios from 'axios';
+import { useHistory } from "react-router";
 
 const useStyles = makeStyles({
     root: {
@@ -40,12 +41,12 @@ const useStyles = makeStyles({
     }
 });
 
-export default function ERickBooking(props) {
+function ERickBooking(props) {
     const classes = useStyles();
     // const bull = <span className={classes.bullet}>•</span>;
     const [PickUp, updatePickup] = useState({ "a": "h" });
     const [Drop, updateDrop] = useState({ "b": "c" });
-
+    const history = useHistory();
 
     return (
         <>
@@ -83,12 +84,21 @@ export default function ERickBooking(props) {
                             <Button size="small" onClick={() => {
                                 console.log('find available ericks query called');
                                 console.log(PickUp, Drop);
-                                axios.post('http://localhost:1234/book/findrick', { liveLocation: PickUp.address, dropLocation: Drop.address }).then(res => { console.log(res.data); }).catch(err => console.log(err));
+                                axios.post('http://localhost:1234/book/findrick', { liveLocation: PickUp.address, dropLocation: Drop.address })
+                                    .then(res => {
+                                        console.log(res.data);
+                                        history.push({
+                                            pathname: '/showericks',
+                                            state: { ericks: res.data }
+                                        })
+                                    })
+                                    .catch(err => console.log(err));
                                 //these pickup and drop will be params for api call
 
                             }}>
 
-                                <p><Link to="/showericks">Find available Ericks</Link></p>
+                                {/* <p><Link to="/showericks">Find available Ericks</Link></p> */}
+                                Find available Ericks
                             </Button>
                         </CardActions>
                     </Card>
@@ -97,6 +107,8 @@ export default function ERickBooking(props) {
         </>
     );
 }
+
+export default ERickBooking;
 
 // export const eRickBooking = () => {
 //     return (

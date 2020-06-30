@@ -9,7 +9,9 @@ import Divider from '@material-ui/core/Divider';
 // import Typography from '@material-ui/core/Typography';
 // import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
-import {HeaderUser} from './HeaderUser';
+import { HeaderUser } from './HeaderUser';
+import axios from 'axios';
+import { Config } from '../utils/Config';
 
 
 
@@ -35,9 +37,11 @@ export default class giveReview extends Component {
         this.onChangeremarks = this.onChangeremarks.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
+        this.userDetails = JSON.parse(localStorage.getItem('userDetails'));
+
 
         this.state = {
-            //userId: '',
+            userId: this.userDetails._id,
             location: '',
             social_hygiene: 2,
             social_distancing: 2,
@@ -64,6 +68,7 @@ export default class giveReview extends Component {
         console.log(latLng, address);
         //add these into respective states
         // setvalue('4');
+        latLng.long = latLng.lng;
         this.setState({
             location: latLng
         });
@@ -113,7 +118,7 @@ export default class giveReview extends Component {
         e.preventDefault();
 
         const rating = {
-            //userId: this.state.userId,
+            userId: this.state.userId,
             location: this.state.location,
             social_hygiene: this.state.social_hygiene,
             social_distancing: this.state.social_distancing,
@@ -121,68 +126,68 @@ export default class giveReview extends Component {
             remarks: this.state.remarks,
         }
         console.log(rating);
-        // axios.post(Config.BASEURL + Config.ADDREVIEW,rating)
-        // .then(data=>console.log("Data recevied"))
-        // .catch(err=>console.log("Error occured",err))
-        
-        // window.location='/url_of_Showreview';
+        axios.post(Config.BASEURL + Config.ADDREVIEW, rating)
+            .then(data => { console.log("Data recevied"); alert("review added"); })
+            .catch(err => console.log("Error occured", err))
+
+        //window.location='/url_of_Showreview';
     }
 
     render() {
         return (
             <>
-            <div>
-                <HeaderUser/>
-            </div>
-            <div>
-                <Container maxWidth="md" className={useStyles.root}>
-                    <h1>ADD A Review</h1>
-                    <form onSubmit={this.onSubmit}>
-                        <div className="form-group">
-                            <label>Search for a Place: </label>
-                        </div>
+                <div>
+                    <HeaderUser />
+                </div>
+                <div>
+                    <Container maxWidth="md" className={useStyles.root}>
+                        <h1>ADD A Review</h1>
+                        <form onSubmit={this.onSubmit}>
+                            <div className="form-group">
+                                <label>Search for a Place: </label>
+                            </div>
 
-                        <SearchLocationInput onChangeP={this.onSelect.bind(this)} />
-                        <br />
-                        <Divider variant="inset" />
-                        <br />
-                        <br />
+                            <SearchLocationInput onChangeP={this.onSelect.bind(this)} />
+                            <br />
+                            <Divider variant="inset" />
+                            <br />
+                            <br />
 
-                        {/* <div className="form-group"> 
+                            {/* <div className="form-group"> 
                             <label>UserId: </label>
                             <input  type="text" required className="form-control" value={this.state.userId} onChange={this.onChangeuserId}/>
                         </div> */}
 
-                        <div className="form-group">
-                            <label>Social Distancing: </label>
-                            <HoverRating name="socialDistancing" onChangeP={this.onChangesocial_distancing} value={2.5} readOnly={false} />
-                        </div>
-                        <Divider variant="inset" />
-                        <div className="form-group">
-                            <label>Social hygiene: </label>
-                            <HoverRating name="socialHygiene" onChangeP={this.onChangesocial_hygiene} value={2.5} readOnly={false} />
-                        </div>
+                            <div className="form-group">
+                                <label>Social Distancing: </label>
+                                <HoverRating name="socialDistancing" onChangeP={this.onChangesocial_distancing} value={2.5} readOnly={false} />
+                            </div>
+                            <Divider variant="inset" />
+                            <div className="form-group">
+                                <label>Social hygiene: </label>
+                                <HoverRating name="socialHygiene" onChangeP={this.onChangesocial_hygiene} value={2.5} readOnly={false} />
+                            </div>
 
-                        <Divider variant="inset" />
-                        <div className="form-group">
-                            <label>Sanitation Availability: </label>
-                            <HoverRating name="sanitization" onChangeP={this.onChangesanitation_availability} value={2.5} readOnly={false} />
-                        </div>
-                        <Divider variant="inset" />
-                        <div className="form-group">
-                            <label>Remarks: </label>
-                            <input type="text" className="form-control" value={this.state.remarks} onChange={this.onChangeremarks} />
-                        </div>
+                            <Divider variant="inset" />
+                            <div className="form-group">
+                                <label>Sanitation Availability: </label>
+                                <HoverRating name="sanitization" onChangeP={this.onChangesanitation_availability} value={2.5} readOnly={false} />
+                            </div>
+                            <Divider variant="inset" />
+                            <div className="form-group">
+                                <label>Remarks: </label>
+                                <input type="text" className="form-control" value={this.state.remarks} onChange={this.onChangeremarks} />
+                            </div>
 
-                        {/* <Divider variant="inset" /> */}
+                            {/* <Divider variant="inset" /> */}
 
-                        <br />
-                        <div className="form-group">
-                            <input type="submit" value="Add Review" className="btn btn-primary" />
-                        </div>
-                    </form>
-                </Container>
-            </div>
+                            <br />
+                            <div className="form-group">
+                                <input type="submit" value="Add Review" className="btn btn-primary" />
+                            </div>
+                        </form>
+                    </Container>
+                </div>
             </>
         );
     }
