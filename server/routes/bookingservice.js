@@ -25,7 +25,7 @@ function findDay(date) {
     weekday[4] = "Thursday";
     weekday[5] = "Friday";
     weekday[6] = "Saturday";
-    let n = weekday[date.getDay()];
+    let n = weekday[(date.getDay() + 1) % 7];
     return n;
 }
 
