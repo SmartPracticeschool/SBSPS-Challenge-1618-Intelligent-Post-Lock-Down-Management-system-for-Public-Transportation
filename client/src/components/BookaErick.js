@@ -11,6 +11,7 @@ import BackImage from '../img/BackgroundImageForBusBooking.jpg';
 import SearchLocationInput from './smartSearch';
 import { Link } from 'react-router-dom';
 import { HeaderUser } from './HeaderUser';
+import axios from 'axios';
 
 const useStyles = makeStyles({
     root: {
@@ -82,7 +83,7 @@ export default function ERickBooking(props) {
                             <Button size="small" onClick={() => {
                                 console.log('find available ericks query called');
                                 console.log(PickUp, Drop);
-
+                                axios.post('http://localhost:1234/book/findrick', { liveLocation: PickUp.address, dropLocation: Drop.address }).then(res => { console.log(res.data); }).catch(err => console.log(err));
                                 //these pickup and drop will be params for api call
 
                             }}>
