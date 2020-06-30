@@ -9,6 +9,7 @@ export const Config = {
     BOOKINGBUS: '/book/bookingbus',
     NOTIFICATION: '/book/notification',
     FINDRICKS: '/book/findrick',
-    ADDREVIEW: '/rate/addreview'
+    ADDREVIEW: '/rate/addreview',
+    CHECKREVIEW: '/rate/checkreview'
 }
 //hello
