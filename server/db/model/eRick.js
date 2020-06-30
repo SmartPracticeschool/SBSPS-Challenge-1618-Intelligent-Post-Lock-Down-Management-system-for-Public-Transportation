@@ -41,6 +41,10 @@ var erickDetails = new Schema({
     }],
 
     'liveLocation': {
+        'address':{
+            type : String,
+            default : null
+        },
         'lat': {
             type: String,
             default: null

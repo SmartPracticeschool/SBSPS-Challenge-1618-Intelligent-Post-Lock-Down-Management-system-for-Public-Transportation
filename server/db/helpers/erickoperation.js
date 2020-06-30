@@ -2,8 +2,7 @@ const erickCollection = require('../model/eRick');
 var passwordHash = require("password-hash");
 var duration = require('google-distance-matrix');
 let credentials = require('../../utils/credentials');
-const { findDistance } = require('./notificationoperation');
-
+// const findERicks = require('../../utils/findEricks');
 const erickOperation = {
     add(erickObj, res) {
         var hash = passwordHash.generate(erickObj.password);
@@ -15,7 +14,7 @@ const erickOperation = {
             }
             else {
                 console.log("The E-rickshaw driver has been registered successfully");
-                res.json({"msg" : "Registerd Successfully"});
+                res.json({ "msg": "Registerd Successfully" });
             }
         })
     },
@@ -27,58 +26,51 @@ const erickOperation = {
             else if (doc) {
                 var result = passwordHash.verify(loginObj.password, doc.password);
                 if (result) {
-                    res.json({ "loginObj": doc , "isLoggedIn" : true});
+                    res.json({ "loginObj": doc, "isLoggedIn": true });
                 }
                 else {
                     console.log("Invalid userid or password in erick collection");
-                    res.json({"isLogged" : false,"msg":"Invalid userid or password"});
+                    res.json({ "isLogged": false, "msg": "Invalid userid or password" });
                 }
             }
             else {
                 console.log("Invalid userid or password");
-                res.json({"isLogged" : false});
+                res.json({ "isLogged": false });
             }
         })
     },
     async findErick(userObject, res) {
         let eRickList;
         let eRickListNearMe = [];
+        let promises = [];
         await erickCollection.find({}, (err, doc) => {
             if (err) {
                 console.log("Error while finding in erick collection");
             }
             else if (doc) {
-                console.log(doc);
+                // console.log(doc);
                 eRickList = doc;
             }
         });
         if (eRickList.length > 0) {
-            let isERickNearP = this.findDistance(userObject.liveLocation, eRickList[0].liveLocation);
-            for (let i = 1; i < eRickList.length; i++) {
-                isERickNearP = isERickNearP.then(function (isNear) {
-                    if (isNear) {
-                        // console.log(rickObject[i - 1])
-                        eRickListNearMe.push(eRickList[i - 1]);
-                    }
-                    return findDistance(userObject.liveLocation, eRickList[i].liveLocation);
-                });
+            for (let i = 0; i < eRickList.length; i++) {
+                promises.push(this.findDistance(userObject.liveLocation, eRickList[i].liveLocation.address));
             }
-            isERickNearP.then(function (isNear) {
-                if (isNear) {
-                    // console.log(rickObject[rickObject.length - 1])
-                    eRickListNearMe.push(eRickList[eRickList.length - 1]);
+            let resolvedPromises = await Promise.all(promises);
+            // console.log("All promises resolved");
+            for (let i = 0; i < resolvedPromises.length; i++) {
+                // console.log(resolvePromises[i]);
+                if (resolvedPromises[i]) {
+                    eRickListNearMe.push(eRickList[i]);
                 }
-                console.log("E-Rick list");
-                for (let i = 0; i < eRickListNearMe.length; i++) {
-                    console.log(i + 1 + ". Driver Name : " + eRickListNearMe[i].driverName + " , Location : " + eRickListNearMe[i].liveLocation);
-                }
-                if(eRickListNearMe > 0){
-                    res.send(eRickListNearMe);
-                }
-                else{
-                    res.send("No E-Ricks Available in your area");
-                }
-            });
+            }
+            // console.log("E-Rick List ", eRickListNearMe);
+            if (eRickListNearMe.length > 0) {
+                res.send(eRickListNearMe);
+            }
+            else {
+                res.send("No E-Ricks Available in your area");
+            }
         }
         else {
             res.send("No E-Ricks Available in your area");
@@ -123,7 +115,6 @@ const erickOperation = {
             })
         })
     }
-
 }
 
 module.exports = erickOperation;
