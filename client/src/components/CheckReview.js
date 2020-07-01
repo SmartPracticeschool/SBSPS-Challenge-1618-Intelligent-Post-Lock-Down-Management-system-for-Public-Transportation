@@ -104,13 +104,13 @@ class checkReview extends React.Component {
                         <br />
                         <div>
                             <h2>  Social Distancing:</h2>
-                            <HoverRating value={this.state.avg_socialDistancing} readOnly={true} onChangeP={this.onChangesanitation_availability.bind(this)} />
+                            <HoverRating value={this.state.avg_socialDistancing} comp="check" readOnly={true} onChangeP={this.onChangesanitation_availability.bind(this)} />
                             <Divider variant="inset" />
                             <h2> Social Hygiene: </h2>
-                            <HoverRating value={this.state.avg_socialHygiene} readOnly={true} onChangeP={this.onChangesanitation_availability.bind(this)} />
+                            <HoverRating value={this.state.avg_socialHygiene} comp="check" readOnly={true} onChangeP={this.onChangesanitation_availability.bind(this)} />
                             <Divider variant="inset" />
                             <h2>  Social sanitization:</h2>
-                            <HoverRating value={this.state.avg_sanitization} readOnly={true} onChangeP={this.onChangesanitation_availability.bind(this)} />
+                            <HoverRating value={this.state.avg_sanitization} comp="check" readOnly={true} onChangeP={this.onChangesanitation_availability.bind(this)} />
                             <Divider variant="inset" />
                         </div>
                         <br />
