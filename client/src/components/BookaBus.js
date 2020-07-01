@@ -81,6 +81,7 @@ export default function BusBooking(props) {
                   <TextField id="startLocation" label="PickUp" onChange={props.takeInput} />
                 </SearchLocationInput> */}
                 <select id='startLocation'  className='form-control' onChange={props.takeInput} >
+                <option>Select your start location</option>
                   {
                     addresses.map((ele,index)=>{
                     return(<option key={index}>{ele.address}</option>)
@@ -93,6 +94,7 @@ export default function BusBooking(props) {
                   {/* <TextField id="endLocation" label="Drop" onChange={props.takeInput} /> */}
                 {/* </SearchLocationInput> */}
                 <select id='endLocation'  className='form-control' onChange={props.takeInput}>
+                <option>Select your end location</option>
                   {
                     addresses.map((ele,index)=>{
                     return(<option key={index}>{ele.address}</option>)

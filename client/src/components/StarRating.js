@@ -40,7 +40,7 @@ export default function HoverRating(props) {
       <Rating
         readOnly={props.readOnly}
         name={props.name}
-        value={value}
+        value={props.comp === "give" ? value : props.value}
         precision={0.5}
         onChange={(event, newValue) => {
           props.onChangeP(newValue);

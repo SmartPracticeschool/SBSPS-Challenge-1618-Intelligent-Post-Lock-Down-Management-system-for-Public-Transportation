@@ -160,18 +160,18 @@ export default class giveReview extends Component {
 
                             <div className="form-group">
                                 <label>Social Distancing: </label>
-                                <HoverRating name="socialDistancing" onChangeP={this.onChangesocial_distancing} value={2.5} readOnly={false} />
+                                <HoverRating name="socialDistancing" comp="give" onChangeP={this.onChangesocial_distancing} value={2.5} readOnly={false} />
                             </div>
                             <Divider variant="inset" />
                             <div className="form-group">
                                 <label>Social hygiene: </label>
-                                <HoverRating name="socialHygiene" onChangeP={this.onChangesocial_hygiene} value={2.5} readOnly={false} />
+                                <HoverRating name="socialHygiene" comp="give" onChangeP={this.onChangesocial_hygiene} value={2.5} readOnly={false} />
                             </div>
 
                             <Divider variant="inset" />
                             <div className="form-group">
                                 <label>Sanitation Availability: </label>
-                                <HoverRating name="sanitization" onChangeP={this.onChangesanitation_availability} value={2.5} readOnly={false} />
+                                <HoverRating name="sanitization" comp="give" onChangeP={this.onChangesanitation_availability} value={2.5} readOnly={false} />
                             </div>
                             <Divider variant="inset" />
                             <div className="form-group">
