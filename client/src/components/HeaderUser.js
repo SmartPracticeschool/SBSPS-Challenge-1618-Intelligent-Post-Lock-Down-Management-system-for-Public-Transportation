@@ -22,8 +22,8 @@ export const HeaderUser=()=>{
         <Menu.Item key="/eRickBooking" ><Link to="/eRickBooking">Erick Booking</Link></Menu.Item>
         <SubMenu  title="Reviews">
           <Menu.ItemGroup >
-            <Menu.Item key="setting:1"><Link to="/checkReviews">Check Reviews</Link></Menu.Item>
-            <Menu.Item key="setting:2"><Link to="/giveReview">Give Review</Link></Menu.Item>
+            <Menu.Item key="/checkReviews"><Link to="/checkReviews">Check Reviews</Link></Menu.Item>
+            <Menu.Item key="/giveReview"><Link to="/giveReview">Give Review</Link></Menu.Item>
           </Menu.ItemGroup>
         </SubMenu>
       </Menu>

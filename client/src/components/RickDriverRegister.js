@@ -12,7 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { Header } from './Header';
+import { HeaderStart } from './Header';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 // function Copyright() {
@@ -54,7 +54,7 @@ export default function RickRegister(props) {
   return (
     <>
       <div>
-        <Header />
+        <HeaderStart />
         <hr />
       </div>
 

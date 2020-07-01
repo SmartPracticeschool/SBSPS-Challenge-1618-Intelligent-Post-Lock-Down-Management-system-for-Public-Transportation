@@ -31,7 +31,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 // import Checkbox from '@material-ui/core/Checkbox';
 import Chip from '@material-ui/core/Chip';
-import { Header } from './Header';
+import { HeaderStart } from './Header';
 import { Link } from 'react-router-dom';
 import RouteMap from './busRegisterMap';
 // function Copyright() {
@@ -141,7 +141,7 @@ export default function BusRegister(props) {
   return (
     <>
       <div>
-        <Header />
+        <HeaderStart />
         <hr />
       </div>
 
