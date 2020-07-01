@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 const { Header} = Layout;
 const { SubMenu } = Menu;
 export const HeaderUser=()=>{
+  let href=window.location.href.split('/');
+  href=href[3];
     return (
         <Layout className="layout">
     <Header>
@@ -14,7 +16,7 @@ export const HeaderUser=()=>{
             href=window.location.href.split('/');
             href=href[3];
       } */}
-      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['/userDashboard']} >
+      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['/'+href]} selectedKeys={['/'+href]} >
         <Menu.Item key="/userDashboard" ><Link to="/userDashboard">User DashBoard</Link></Menu.Item>
         <Menu.Item key="/busBooking" ><Link to="/busBooking">Bus Booking</Link></Menu.Item>
         <Menu.Item key="/eRickBooking" ><Link to="/eRickBooking">Erick Booking</Link></Menu.Item>
