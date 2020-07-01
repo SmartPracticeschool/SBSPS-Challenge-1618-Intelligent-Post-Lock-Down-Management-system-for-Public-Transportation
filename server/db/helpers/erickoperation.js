@@ -52,7 +52,7 @@ const erickOperation = {
                 eRickList = doc;
             }
         });
-        if (eRickList.length > 0) {
+        // if (eRickList.length > 0) {
             for (let i = 0; i < eRickList.length; i++) {
                 promises.push(this.findDistance(userObject.liveLocation, eRickList[i].liveLocation.address));
             }
@@ -64,17 +64,18 @@ const erickOperation = {
                     eRickListNearMe.push(eRickList[i]);
                 }
             }
+            res.send(eRickListNearMe);
             // console.log("E-Rick List ", eRickListNearMe);
-            if (eRickListNearMe.length > 0) {
-                res.send(eRickListNearMe);
-            }
-            else {
-                res.send("No E-Ricks Available in your area");
-            }
-        }
-        else {
-            res.send("No E-Ricks Available in your area");
-        }
+            // if (eRickListNearMe.length > 0) {
+            //     res.send(eRickListNearMe);
+            // }
+            // else {
+            //     res.send("No E-Ricks Available in your area");
+            // }
+        // }
+        // else {
+        //     res.send("No E-Ricks Available in your area");
+        // }
     },
     findDistance(origin, destination) {
         return new Promise(function (resolve, reject) {
