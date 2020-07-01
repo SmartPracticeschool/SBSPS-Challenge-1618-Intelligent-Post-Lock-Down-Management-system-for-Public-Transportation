@@ -21,7 +21,7 @@ export const HeaderStart=()=>{
         <Menu.Item key="/" ><Link  exact to='/'>Login</Link></Menu.Item>
         <Menu.Item key="/userRegister" ><Link  to='/userRegister'>User Register</Link></Menu.Item>
         <Menu.Item key="/busRegister" ><Link  to='/busRegister'>Bus Driver Register</Link></Menu.Item>
-        <Menu.Item key="/rickRegister" ><Link  to='/rickRegister'>Bus Driver Register</Link></Menu.Item>
+        <Menu.Item key="/rickRegister" ><Link  to='/rickRegister'>E-Rick Driver Register</Link></Menu.Item>
       </Menu>
     </Header>
     </Layout>
