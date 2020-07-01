@@ -105,8 +105,9 @@ export default function BusBooking(props) {
           <CardActions>
             <Button size="small" onClick={() => { props.findBuses() }} >
             {/* onClick={() => { props.findBuses() }} */}
-              <p><Link to="/showbuses">Find Buses</Link></p>
+              {/* <p><Link to="/showbuses">Find Buses</Link></p> */}
               {/* /ticketdisplay */}
+              Find Buses
             </Button>
           </CardActions>
         </Card>

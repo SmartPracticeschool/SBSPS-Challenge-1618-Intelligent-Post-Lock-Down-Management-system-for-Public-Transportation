@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
 // const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function ShowBuses(props) {
-    console.log("seat booking object in show buses ",props.seatBookingObj);
+    console.log("seat booking object in show buses ",props.availableBuses);
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -136,13 +136,16 @@ export default function ShowBuses(props) {
                       This is a media card. You can use this section to describe the content.
                     </Typography> */}
                     <Typography className={classes.title} color="textSecondary" gutterBottom>
-                        Seat No.:{ele.seat}
+                        Driver Name:{ele.driverName}
                     </Typography>
                     <Typography className={classes.title} color="textSecondary" gutterBottom>
-                        Vehicle No.:{ele.vehicle}
+                        Owner Name:{ele.ownerName}
                     </Typography>
                     <Typography className={classes.title} color="textSecondary" gutterBottom>
-                        Price:{ele.price}
+                        Vehicle Registration No.:{ele.vehicleRegistrationNumber}
+                    </Typography>
+                    <Typography className={classes.title} color="textSecondary" gutterBottom>
+                        Total Seats:{ele.totalSeats}
                     </Typography>
                   </CardContent>
                   <CardActions>
@@ -165,7 +168,7 @@ export default function ShowBuses(props) {
                     <Button onClick={handleClose} color="primary">
                     Disagree
                     </Button>
-                    <Button onClick={()=>{props.bookASeat()}} color="primary" autoFocus>
+                    <Button onClick={()=>{props.bookASeat(ele.vehicleRegistrationNumber)}} color="primary" autoFocus>
                     Agree
                     </Button>
                     </DialogActions>

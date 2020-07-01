@@ -22,7 +22,7 @@ import ERickBooking from '../components/BookaErick';
 import ShowEricks from '../components/ShowEricks';
 // import Loader2 from '../components/Loader2';
 import {TicketDisplay} from '../components/TicketDisplay';
-// import axios from 'axios';
+import axios from 'axios';
 
 class Main extends React.Component {
     constructor(props) {
@@ -31,7 +31,7 @@ class Main extends React.Component {
         this.inputs = {};
         this.routeObject = {};
         this.availableBuses = [];
-        this.seatBookingObj = { VehicleID: "", UserID: "", price: "" }
+        this.seatBookingObj = {}
         this.state = { clientID : '' , role : ''};
 
         // this.state = {
@@ -149,24 +149,36 @@ class Main extends React.Component {
         var objStartEnd = { "startLocation": this.inputs['startLocation'], "endLocation": this.inputs['endLocation'] };
         console.log(this.inputs);
         console.log(objStartEnd);
-        this.availableBuses = [{ seat: "1", vehicle: "1221", price: "10" }, { seat: "1", vehicle: "1221", price: "10" }, { seat: "1", vehicle: "1221", price: "10" }, { seat: "1", vehicle: "1221", price: "10" }];
+        //this.availableBuses = [{ seat: "1", vehicle: "1221", price: "10" }, { seat: "1", vehicle: "1221", price: "10" }, { seat: "1", vehicle: "1221", price: "10" }, { seat: "1", vehicle: "1221", price: "10" }];
         //availableBusesDisplay(availableBuses);
-        // axios.post(Config.BASEURL + Config.FINDBUSES,objStartEnd)
-        // .then(data=>{
-        // console.log("Data recevied",data);
-        // //this.setState({"loading":false})
-        // })
-        // .catch(err=>console.log("Error occured",err))
+        axios.post(Config.BASEURL + Config.FINDBUSES,objStartEnd)
+        .then(data=>{
+        console.log("Data recevied",data);
+        this.availableBuses=data.data;
+        this.props.history.push("showbuses");
+        console.log(this.availableBuses);
+        //this.setState({"loading":false})
+        })
+        .catch(err=>console.log("Error occured",err))
     }
 
-    bookASeat(vehicleId, price) {
-        this.seatBookingObj = { VehicleID: vehicleId, price: price, UserID: "12232424" }
+    bookASeat(vehicleId) {
+        var obj={VehicleID: vehicleId}
+        //this.seatBookingObj = { VehicleID: vehicleId }
         console.log("the seat booking object in main js", this.seatBookingObj);
-        // axios.post(Config.BASEURL+Config.BOOKINGBUS,this.seatBookingObj)
-        // .then(data=>{
-        //     this.seatBookingObj.SeatNo=data.SeatNo;
-        // })
-        // .catch(err=>console.log('Error occured while fetching data for seat',err))
+        
+        axios.post(Config.BASEURL+Config.BOOKINGBUS,obj)
+        .then(data=>{
+            console.log("book a seat call data ",data);
+
+            this.seatBookingObj=data.data;
+            this.props.history.push("/ticketdisplay");
+        })
+        .catch(err=>console.log('Error occured while fetching data for seat',err))
+    }
+
+    goBackToDashBoard(){
+        this.props.history.push("userDashboard");
     }
 
 
@@ -233,7 +245,7 @@ class Main extends React.Component {
                     <Route path='/eRickBooking' component={ERickBooking} />
                     <Route path="/showbuses" render={() => <ShowBuses availableBuses={this.availableBuses} seatBookingObj={this.seatBookingObj} bookASeat={this.bookASeat.bind(this)} />}></Route>
                     <Route path='/showericks' component={ShowEricks} />
-                    <Route path='/ticketdisplay' component={TicketDisplay} />
+                    <Route path='/ticketdisplay' render={()=><TicketDisplay seatBookingObj={this.seatBookingObj} goBackToDashBoard={this.goBackToDashBoard.bind(this)}/>}  />
                 </Switch>
             </div>
         )

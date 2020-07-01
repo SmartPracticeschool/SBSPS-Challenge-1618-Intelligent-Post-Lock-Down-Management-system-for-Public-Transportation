@@ -1,18 +1,29 @@
 import React from 'react';
 import { Result, Button } from 'antd';
 import './HeaderUSer.css';
+import { Typography, Space } from 'antd';
 
-export const TicketDisplay=()=>{
+const { Text, Link } = Typography;
+
+export const TicketDisplay=(props)=>{
+  console.log("The console is printing in ticket display",props.seatBookingObj);
+  //var msg=`Vechileid:${props.seatBookingObj.VehicleID} Price:20`
     return(
         <Result
         status="success"
-        title="Successfully Purchased Cloud Server ECS!"
-        subTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
+        title="Successfully Purchased The Bus Ticket"
         extra={[
-          <Button type="primary" key="console">
-            Go Console
-          </Button>,
-          <Button key="buy">Buy Again</Button>,
+          <Text>Vehicleid:</Text>,
+          <Text>{props.seatBookingObj.VehicleID}</Text>,
+          <br/>,
+          <Text>Price:20</Text>,
+          <br/>,
+          <br/>,
+          <Button type="primary" key="console" onClick={()=>{props.goBackToDashBoard()}}>
+            Go Back To UserDashBoard
+          </Button>
+          
+          // <Button key="buy">Buy Again</Button>,
         ]}
       />
     )
