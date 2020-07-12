@@ -16,6 +16,7 @@ import CheckRoundedIcon from '@material-ui/icons/CheckRounded'; //Tick Icon   (D
 // import { HeaderUser } from './HeaderUser';
 import axios from 'axios';
 import { Container } from '@material-ui/core';
+import Footer from './footer';
 
 class RedZone extends Component {
     constructor(props) {
@@ -103,7 +104,12 @@ class RedZone extends Component {
             message = (
                 <>
                     <div>
-                        <h1 className={styles.error}>You Are Present In Red Zone</h1>
+                        <h1
+                            style={{ textAlign: "center" }}
+                        >Attention,You are present in Red Zone</h1>
+                        <h2
+                            style={{ textAlign: "center", color: "#c50505" }}
+                        >High proximity region</h2>
                     </div>
                     <div>
                         <List>
@@ -176,18 +182,7 @@ class RedZone extends Component {
                             <ListItem>
                                 <ListItemText primary="12. All health services, including AYUSH, have been permitted to operate in red zones." />
                             </ListItem>
-                            <ListItem>
-                                <ListItemText primary="13. Banks, NBFCs, insurance and capital market activities along with credit co-operative societies will function in red zones." />
-                            </ListItem>
-                            <ListItem>
-                                <ListItemText primary="14. Homes for children, senior citizens and widows (including Anganwadis) have been allowed to function." />
-                            </ListItem>
-                            <ListItem>
-                                <ListItemText primary="15. Apart from courier/postal services, public utility offices (including internet) will remain open in red zones." />
-                            </ListItem>
-                            <ListItem>
-                                <ListItemText primary="16. Print and electronic media, IT and IT-enabled services, data and call centres, cold storage and warehousing services, private security and facility management services, and services provided by self-employed persons." />
-                            </ListItem>
+
                             <ListItem>
                                 <ListItemAvatar>
                                     <Avatar>
@@ -226,13 +221,9 @@ class RedZone extends Component {
                             <ListItem>
                                 <ListItemText primary="10. Inter-district and intra-district movement of buses" />
                             </ListItem>
-                            <ListItem>
-                                <ListItemText primary="11. Cycle rickshaws and auto rickshaws" />
-                            </ListItem>
-                            <ListItem>
-                                <ListItemText primary="12. Taxis and cab aggregators" />
-                            </ListItem>
+
                         </List>
+                        <Footer />
                     </div>
                 </>
             )
@@ -328,6 +319,7 @@ class RedZone extends Component {
                                 <ListItemText primary="10. Inter-district and intra-district movement of buses" />
                             </ListItem>
                         </List>
+                        <Footer />
                     </div>
                 </>
             )
@@ -467,63 +459,7 @@ class RedZone extends Component {
 
 
 
-        // return (this.state.containmentsAvailability?(
-        //     (this.state.districtZoneType==='Red Zone')?(
-        //         <div>
-        //             <h1 className={styles.error}>You Are Present In Red Zone</h1>
-        //         </div>
-        //     ):((this.state.districtZoneType==='Orange Zone')?(
-        //         <div>
-        //             <h1 className={styles.bad}>You Are Present In Orange Zone</h1>
-        //         </div>
-        //     ):(
-        //         <div>
-        //             <h1 className={styles.success}>You Are Present In Green Zone</h1>
-        //         </div>
-        //     ))
-        // ):(
-        //     <div>
-        //         <h1>Data not available for your area</h1>
-        //     </div>
-        // ))
 
-
-
-
-
-
-
-
-
-
-        // if(this.state.containmentsAvailability){
-
-        //     if(this.state.districtZoneType==='Red Zone'){
-        //         return(
-        //             <div>
-        //                 <h1 className={styles.error}>You Are Present In Red Zone</h1>
-        //             </div>
-        //         )
-        //     }else if(this.state.districtZoneType==='Orange Zone'){
-        //         return(
-        //             <div>
-        //                 <h1 className={styles.bad}>You Are Present In Orange Zone</h1>
-        //             </div>
-        //         )
-        //     }else{
-        //         return(
-        //             <div>
-        //                 <h1 className={styles.success}>You Are Present In Green Zone</h1>
-        //             </div>
-        //         )
-        //     }
-        // }else{
-        //     return(
-        //         <div>
-        //             <h1>Data not available for your area</h1>
-        //         </div>
-        //     )
-        // }
     }
 }
 

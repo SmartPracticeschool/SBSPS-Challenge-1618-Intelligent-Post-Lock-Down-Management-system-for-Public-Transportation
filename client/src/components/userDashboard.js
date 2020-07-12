@@ -3,11 +3,50 @@ import React from 'react';
 import { HeaderUser } from './HeaderUser';
 import RedZone from './RedZone';
 import io from 'socket.io-client';
+import { Typography } from '@material-ui/core';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import { makeStyles } from '@material-ui/core/styles';
+
+
+const useStyles = makeStyles((theme) => ({
+    icon: {
+        marginRight: theme.spacing(2),
+    },
+    heroContent: {
+        backgroundColor: '#43ba45',
+        // theme.palette.background.paper,
+        padding: theme.spacing(8, 0, 6),
+    },
+    heroButtons: {
+        marginTop: theme.spacing(4),
+    },
+    cardGrid: {
+        paddingTop: theme.spacing(8),
+        paddingBottom: theme.spacing(8),
+
+    },
+    card: {
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    cardMedia: {
+        paddingTop: '56.25%', // 16:9
+    },
+    cardContent: {
+        flexGrow: 1,
+    },
+    footer: {
+        backgroundColor: theme.palette.background.paper,
+        padding: theme.spacing(6),
+    },
+}));
 
 export default class UserDashboard extends React.Component {
 
     constructor(props) {
         super(props);
+
         this.currentpos = { lat: 28.7041, lng: 77.1025 }
         this.socket = io('http://localhost:1234');
         this.userid = localStorage.userId;
@@ -45,6 +84,7 @@ export default class UserDashboard extends React.Component {
     }
 
     render() {
+
         return (
             <>
 
@@ -54,6 +94,20 @@ export default class UserDashboard extends React.Component {
                 <div>
 
                     <RedZone />
+                    {/* Footer */}
+                    {/* <footer style={{
+                        backgroundColor: "#ded8d7",
+                        padding: "6"
+                    }}>
+                        <Typography variant="h6" align="center" gutterBottom>
+                            Developed with {<FavoriteIcon />} by Team "Maniacs for a cause"
+        </Typography>
+                        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+                            Himank Gupta, Manik Singh, Shobhit Aggarwal, Shivam Chauhan
+        </Typography>
+                        {/* <Copyright /> */}
+                    {/* </footer> */}
+                    {/* End footer */}
                 </div>
             </>
         )

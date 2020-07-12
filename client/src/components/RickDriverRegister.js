@@ -14,6 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { HeaderStart } from './Header';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import Footer from './footer';
 
 // function Copyright() {
 //   return (
@@ -181,8 +182,8 @@ export default function RickRegister(props) {
         <Button>
           <p><Link to="/eRickDashboard">Temp link to e-Rick driver dashboard</Link></p>
         </Button>
-
       </Container>
+      <Footer />
     </>
   );
 }

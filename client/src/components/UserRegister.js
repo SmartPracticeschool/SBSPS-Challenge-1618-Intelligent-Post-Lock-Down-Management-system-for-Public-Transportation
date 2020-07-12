@@ -14,6 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { HeaderStart } from './Header';
 import { Link } from 'react-router-dom';
+import Footer from './footer';
 
 // function Copyright() {
 //   return (
@@ -157,6 +158,7 @@ export default function UserRegister(props) {
       <Button>
         <p><Link to="/userDashboard">Temp link to user dashboard</Link></p>
       </Button>
+      <Footer />
     </>
   );
 }

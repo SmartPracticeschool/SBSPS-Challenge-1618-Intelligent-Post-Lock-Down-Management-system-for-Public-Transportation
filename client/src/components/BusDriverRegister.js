@@ -34,6 +34,7 @@ import Chip from '@material-ui/core/Chip';
 import { HeaderStart } from './Header';
 import { Link } from 'react-router-dom';
 import RouteMap from './busRegisterMap';
+import Footer from './footer';
 // function Copyright() {
 //   return (
 //     <Typography variant="body2" color="textSecondary" align="center">
@@ -325,7 +326,7 @@ export default function BusRegister(props) {
                     </Toolbar>
                   </AppBar>
 
-                  <RouteMap handleRouteObject = {props.handleRouteObject}/>
+                  <RouteMap handleRouteObject={props.handleRouteObject} />
                 </Dialog>
               </Grid>
             </Grid>
@@ -355,7 +356,7 @@ export default function BusRegister(props) {
         </Button>
 
       </Container>
-
+      <Footer />
     </>
   );
 }

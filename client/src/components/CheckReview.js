@@ -13,6 +13,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Container from '@material-ui/core/Container';
 import { HeaderUser } from './HeaderUser';
 import axios from 'axios';
+import Footer from './footer';
 
 
 const useStyles = makeStyles(theme => ({
@@ -35,7 +36,7 @@ class checkReview extends React.Component {
         this.avg_socialHygiene = 2;
         this.state = {
             location: '',
-            reviews: ["xyz", "eyz", "abx", "abc"],
+            reviews: ["no reviews available yet"],
             covid_zone: 'red',
             avg_socialHygiene: 0,
             avg_socialDistancing: 0,
@@ -92,8 +93,8 @@ class checkReview extends React.Component {
                 <div>
 
                     <Container maxWidth="md">
-
-                        <h1> check Review Component </h1>
+                        <br />
+                        <h1 style={{ textAlign: "center" }}> check Reviews for a Place </h1>
 
                         <Divider variant="inset" />
                         <br />

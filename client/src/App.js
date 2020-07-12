@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
-import {withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Main from './container/Main';
+import Footer from './components/footer';
 // import { ERickDashboard } from './components/eRickDriverDashboard';
 // import { BusDashboard } from './components/BusDriverDashboard';
 // import { UserDashboard } from './components/userDashboard';

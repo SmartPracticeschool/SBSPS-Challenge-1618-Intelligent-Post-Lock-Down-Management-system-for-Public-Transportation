@@ -21,8 +21,9 @@ import ShowBuses from '../components/ShowBuses';
 import ERickBooking from '../components/BookaErick';
 import ShowEricks from '../components/ShowEricks';
 // import Loader2 from '../components/Loader2';
-import {TicketDisplay} from '../components/TicketDisplay';
+import { TicketDisplay } from '../components/TicketDisplay';
 import axios from 'axios';
+import Footer from '../components/footer';
 
 class Main extends React.Component {
     constructor(props) {
@@ -32,7 +33,7 @@ class Main extends React.Component {
         this.routeObject = {};
         this.availableBuses = [];
         this.seatBookingObj = {}
-        this.state = { clientID : '' , role : ''};
+        this.state = { clientID: '', role: '' };
 
         // this.state = {
         //     'lat': '28.7041',
@@ -151,33 +152,33 @@ class Main extends React.Component {
         console.log(objStartEnd);
         //this.availableBuses = [{ seat: "1", vehicle: "1221", price: "10" }, { seat: "1", vehicle: "1221", price: "10" }, { seat: "1", vehicle: "1221", price: "10" }, { seat: "1", vehicle: "1221", price: "10" }];
         //availableBusesDisplay(availableBuses);
-        axios.post(Config.BASEURL + Config.FINDBUSES,objStartEnd)
-        .then(data=>{
-        console.log("Data recevied",data);
-        this.availableBuses=data.data;
-        this.props.history.push("showbuses");
-        console.log(this.availableBuses);
-        //this.setState({"loading":false})
-        })
-        .catch(err=>console.log("Error occured",err))
+        axios.post(Config.BASEURL + Config.FINDBUSES, objStartEnd)
+            .then(data => {
+                console.log("Data recevied", data);
+                this.availableBuses = data.data;
+                this.props.history.push("showbuses");
+                console.log(this.availableBuses);
+                //this.setState({"loading":false})
+            })
+            .catch(err => console.log("Error occured", err))
     }
 
     bookASeat(vehicleId) {
-        var obj={VehicleID: vehicleId}
+        var obj = { VehicleID: vehicleId }
         //this.seatBookingObj = { VehicleID: vehicleId }
         console.log("the seat booking object in main js", this.seatBookingObj);
-        
-        axios.post(Config.BASEURL+Config.BOOKINGBUS,obj)
-        .then(data=>{
-            console.log("book a seat call data ",data);
 
-            this.seatBookingObj=data.data;
-            this.props.history.push("/ticketdisplay");
-        })
-        .catch(err=>console.log('Error occured while fetching data for seat',err))
+        axios.post(Config.BASEURL + Config.BOOKINGBUS, obj)
+            .then(data => {
+                console.log("book a seat call data ", data);
+
+                this.seatBookingObj = data.data;
+                this.props.history.push("/ticketdisplay");
+            })
+            .catch(err => console.log('Error occured while fetching data for seat', err))
     }
 
-    goBackToDashBoard(){
+    goBackToDashBoard() {
         this.props.history.push("userDashboard");
     }
 
@@ -235,7 +236,7 @@ class Main extends React.Component {
                     <Route path='/busRegister' render={() => <BusRegister takeInput={this.takeInput.bind(this)} busRegister={this.busRegister.bind(this)} handleSelectedDays={this.handleSelectedDays.bind(this)} handleRouteObject={this.handleRouteObject.bind(this)} />} />
                     <Route path='/rickRegister' render={() => <RickRegister takeInput={this.takeInput.bind(this)} rickRegister={this.rickRegister.bind(this)} />} />
                     <Route path='/userDashboard' render={() => <UserDashboard />} />
-                    <Route path='/busDashboard' render={() => <BusDriverDashboard/>} />
+                    <Route path='/busDashboard' render={() => <BusDriverDashboard />} />
                     <Route path='/eRickDashboard' render={() => <ERickDashboard />} />
                     <Route path='/smartVisit' component={smartVisit} />
                     <Route path='/giveReview' component={giveReview} />
@@ -245,8 +246,9 @@ class Main extends React.Component {
                     <Route path='/eRickBooking' component={ERickBooking} />
                     <Route path="/showbuses" render={() => <ShowBuses availableBuses={this.availableBuses} seatBookingObj={this.seatBookingObj} bookASeat={this.bookASeat.bind(this)} />}></Route>
                     <Route path='/showericks' component={ShowEricks} />
-                    <Route path='/ticketdisplay' render={()=><TicketDisplay seatBookingObj={this.seatBookingObj} goBackToDashBoard={this.goBackToDashBoard.bind(this)}/>}  />
+                    <Route path='/ticketdisplay' render={() => <TicketDisplay seatBookingObj={this.seatBookingObj} goBackToDashBoard={this.goBackToDashBoard.bind(this)} />} />
                 </Switch>
+
             </div>
         )
     }

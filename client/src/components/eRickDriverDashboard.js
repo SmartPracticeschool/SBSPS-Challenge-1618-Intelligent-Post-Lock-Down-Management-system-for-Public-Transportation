@@ -14,13 +14,14 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
             <Link color="inherit" href="https://material-ui.com/">
-                Your Website
+                Intelligent Transit
       </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
@@ -150,15 +151,15 @@ export default function ERickDashboard() {
                 </Container>
             </main>
             {/* Footer */}
-            <footer className={classes.footer}>
+            {/* <footer className={classes.footer}>
                 <Typography variant="h6" align="center" gutterBottom>
-                    Footer
+                    Developed with {<FavoriteIcon />} by Team "Maniacs for a cause"
         </Typography>
                 <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-                    Something here to give the footer a purpose!
+                    Himank Gupta, Manik Singh, Shobhit Aggarwal, Shivam Chauhan
         </Typography>
                 <Copyright />
-            </footer>
+            </footer> */}
             {/* End footer */}
         </React.Fragment >
     );

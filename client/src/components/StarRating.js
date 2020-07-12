@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
+import Footer from './footer';
 
 const labels = {
   0.5: 'Useless',
@@ -54,6 +55,7 @@ export default function HoverRating(props) {
         }}
       />
       {value !== null && <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>}
+
     </div>
   );
 }

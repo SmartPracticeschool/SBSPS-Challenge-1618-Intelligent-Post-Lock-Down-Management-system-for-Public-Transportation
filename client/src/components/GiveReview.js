@@ -12,6 +12,7 @@ import Container from '@material-ui/core/Container';
 import { HeaderUser } from './HeaderUser';
 import axios from 'axios';
 import { Config } from '../utils/Config';
+import Footer from './footer';
 
 
 
@@ -141,7 +142,8 @@ export default class giveReview extends Component {
                 </div>
                 <div>
                     <Container maxWidth="md" className={useStyles.root}>
-                        <h1>ADD A Review</h1>
+                        <br />
+                        <h1 style={{ textAlign: "center" }}>Add Review for a place</h1>
                         <form onSubmit={this.onSubmit}>
                             <div className="form-group">
                                 <label>Search for a Place: </label>
@@ -186,6 +188,8 @@ export default class giveReview extends Component {
                                 <input type="submit" value="Add Review" className="btn btn-primary" />
                             </div>
                         </form>
+
+
                     </Container>
                 </div>
             </>
