@@ -179,9 +179,9 @@ export default function RickRegister(props) {
         {/* <Box mt={5}>
         <Copyright />
       </Box> */}
-        <Button>
+        {/* <Button>
           <p><Link to="/eRickDashboard">Temp link to e-Rick driver dashboard</Link></p>
-        </Button>
+        </Button> */}
       </Container>
       <Footer />
     </>

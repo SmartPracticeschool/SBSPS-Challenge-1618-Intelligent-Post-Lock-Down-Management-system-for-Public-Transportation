@@ -155,9 +155,9 @@ export default function UserRegister(props) {
         <Copyright />
       </Box> */}
       </Container>
-      <Button>
+      {/* <Button>
         <p><Link to="/userDashboard">Temp link to user dashboard</Link></p>
-      </Button>
+      </Button> */}
       <Footer />
     </>
   );

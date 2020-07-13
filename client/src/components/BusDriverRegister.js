@@ -351,9 +351,9 @@ export default function BusRegister(props) {
         {/* <Box mt={5}>
         <Copyright />
       </Box> */}
-        <Button>
+        {/* <Button>
           <p><Link to="/busDashboard">Temp link to bus driver dashboard</Link></p>
-        </Button>
+        </Button> */}
 
       </Container>
       <Footer />

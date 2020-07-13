@@ -18,3 +18,12 @@
   [data-theme="dark"] .logo {
     background: rgba(255,255,255,0.3);
   }
+  .ant-avatar {
+    margin-top: 3px;
+    margin-right: 16px;
+    margin-left: 900px;
+  }
+  .ant-row-rtl .ant-avatar {
+    margin-right: 0;
+    margin-left: 16px;
+  }

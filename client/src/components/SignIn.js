@@ -101,9 +101,9 @@ export default function SignIn(props) {
           >
             Sign In
           </Button>
-          <Button>
+          {/* <Button>
             <p><Link to="/userDashboard">Temp link to user dashboard</Link></p>
-          </Button>
+          </Button> */}
           {/* <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">

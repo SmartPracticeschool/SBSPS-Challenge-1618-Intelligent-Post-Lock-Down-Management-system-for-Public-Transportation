@@ -3,6 +3,10 @@ import { Layout, Menu } from 'antd';
 // import {SettingOutlined} from '@ant-design/icons';
 import './HeaderUSer.css';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { Avatar } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
+// import Button from '@material-ui/core/Button';
+import { Button } from 'antd';
 const { Header} = Layout;
 const { SubMenu } = Menu;
 export const HeaderUser=()=>{
@@ -26,7 +30,18 @@ export const HeaderUser=()=>{
             <Menu.Item key="/giveReview"><Link to="/giveReview">Give Review</Link></Menu.Item>
           </Menu.ItemGroup>
         </SubMenu>
+        <Avatar size="large" icon={<UserOutlined />} />
+        {/* <Button variant="contained" color="primary">
+        <p><Link to="/">Logout</Link></p>
+        </Button> */}
+        {/* <Button variant="outlined" color="primary">
+        <p><Link to="/">Logout</Link></p>
+      </Button> */}
+        <Button type="primary">
+        <Link to="/">Logout</Link>
+        </Button>
       </Menu>
+      
     </Header>
     </Layout>
     )
