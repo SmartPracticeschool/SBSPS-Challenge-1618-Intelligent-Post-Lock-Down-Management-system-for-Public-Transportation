@@ -4,6 +4,10 @@ Since this pandemic, the world has seen many changes and adopted certain habits 
 
 Thus, we present a prominent and lasting solution by taking both current conditions and future estimates in consideration, an application which will help us maintain a distributed network of new age transportation avoiding maximum possibilities of crowd generation and traditional centralized way of boarding public transport and general public transport, to a new, more distributed transportation boarding and travelling system, also providing apt measures for non travelling users for better planned and precautionary visits and best advisories based on real time factors to minimize risk levels.
 
-video demo @  https://drive.google.com/file/d/1BhzewVO23ShfdndD997JPJ2q0SBrAV42/view?usp=sharing
+Project PPT @ https://drive.google.com/file/d/13sEU4xextf_T5Wwh9P5wElDYzt9Eujoz/view?usp=sharing
+
+Project Report @ https://drive.google.com/file/d/1GN0drz1QNToLmvODbqb6VMkGxXTv_iqE/view?usp=sharing
+
+Video Demo @  https://drive.google.com/file/d/1BhzewVO23ShfdndD997JPJ2q0SBrAV42/view?usp=sharing
 
 by team "Maniacs for a Cause".
