@@ -10,4 +10,6 @@ Project Report @ https://drive.google.com/file/d/1GN0drz1QNToLmvODbqb6VMkGxXTv_i
 
 Video Demo @  https://drive.google.com/file/d/1BhzewVO23ShfdndD997JPJ2q0SBrAV42/view?usp=sharing
 
+Note : enter your own Google GCP API Key(allotted based on registered mail to properly run the application,since commercial) to run some features of this application @ client/public/index.html 
+
 by team "Maniacs for a Cause".
