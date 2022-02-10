@@ -16,7 +16,7 @@
     "material-ui-rating": "^4.2.0",
     "mdbootstrap": "^4.19.0",
     "mdbreact": "^4.19.1",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-google-maps": "^9.4.5",
